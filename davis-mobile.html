@@ -6,10 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Mobile Layout</title>
-    <link rel="stylesheet" href="./reset.css">
+    <link rel="stylesheet" href="./assets/css/reset.css">
     <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <link rel="stylesheet" href="./davis-mobile.css">
+    <link rel="stylesheet" href="./assets/css/davis-mobile.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
@@ -17,7 +17,9 @@
 
 <body>
     <div class="container">
-        <div id="header">Next Steps</div>
+        <div id="header">
+            <img src="https://files.slack.com/files-pri/TH6SQL9BJ-FK98EAZFT/logowords__2_.png" alt="Next Step" id="logo">
+        </div>
         <div class="row centered">
             <div class="col s12">
                 <div id="ageObject" class="slideLeft">
@@ -71,33 +73,7 @@
     </div>
     <script src="https://code.jquery.com/jquery-3.4.1.js"
         integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
-    <script>
-        $("#hide-age").on("click", function () {
-            $("#ageObject").attr("data-visibility", "hidden");
-            $("#ageObject").hide();
-            $(".hide-me-name").show();
-            $('#userNameObject').addClass("slideLeft")
-        });
-        $("#hide-user-name").on("click", function () {
-            $("#userNameObject").attr("data-visibility", "hidden");
-            $("#userNameObject").hide();
-            $(".hide-me-crush").show();
-            $("#crushNameObject").addClass("slideLeft")
-        });
-        $("#hide-crush-name").on("click", function () {
-            $("#crushNameObject").attr("data-visibility", "hidden");
-            $("#crushNameObject").hide();
-            $(".hide-me-city").show();
-            $("#cityObject").addClass("slideLeft");
-        });
-        $("#hide-date-city").on("click", function () {
-            $("#cityObject").attr("data-visibility", "hidden");
-            $("#cityObject").hide();
-            $(".hide-me-food").show();
-            $("#foodObject").addClass("slideLeft");
-        });
-
-    </script>
+    <script src = "assets/javascript/davis-mobile.js"> </script>
 </body>
 
 </html>
