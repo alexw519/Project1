@@ -44,6 +44,7 @@ body {
     color: white;
 }
 
+
 #userAge, #userName, #crushName, #dateCity, #faveFood {
     color: #fe5652;
     text-align: center;
@@ -56,6 +57,7 @@ body {
 #logo {
    max-width: 350px;
 }
+
 
 /*
 ==============================================
@@ -1119,4 +1121,157 @@ stretchRight
     100% {
         -webkit-transform: scaleX(1);
     }
+}
+  .beatingHeart{
+    width:50px;
+    margin:50px auto;
+    height: 50px;
+  }
+  
+  .beatingHeart .heart {
+      position: absolute;
+      width: 50px;
+      height: 45px;
+      opacity: 0.6;
+      -webkit-animation: beat 3.0s         infinite ease-in-out;
+  }
+  .heart:before , .heart:after {
+      position: absolute;
+      content: "";
+      left: 25px;
+      top: 0;
+      width: 25px;
+      height: 40px;
+      background: #fe5652;
+      -moz-border-radius: 50px 50px 0 0;
+      border-radius: 50px 50px 0 0;
+      -webkit-transform: rotate(-45deg);
+         -moz-transform: rotate(-45deg);
+          -ms-transform: rotate(-45deg);
+           -o-transform: rotate(-45deg);
+              transform: rotate(-45deg);
+      -webkit-transform-origin: 0 100%;
+         -moz-transform-origin: 0 100%;
+          -ms-transform-origin: 0 100%;
+           -o-transform-origin: 0 100%;
+              transform-origin: 0 100%;
+  }
+  
+  .fushiaHeart:before , .fushiaHeart:after
+  {
+    background: #fe5652;
+  }
+  .pinkHeart:before , .pinkHeart:after{
+    background: #fe5652;
+  }
+  
+  .heart:after{
+      left: 0;
+      -webkit-transform: rotate(45deg);
+         -moz-transform: rotate(45deg);
+          -ms-transform: rotate(45deg);
+           -o-transform: rotate(45deg);
+              transform: rotate(45deg);
+      -webkit-transform-origin: 100% 100%;
+         -moz-transform-origin: 100% 100%;
+          -ms-transform-origin: 100% 100%;
+           -o-transform-origin: 100% 100%;
+              transform-origin :100% 100%;
+  }
+  
+  .beatingHeart .heart2 {
+    -webkit-animation-delay: -1.0s;
+    animation-delay: -1.0s;
+  }
+  
+  .beatingHeart .heart3 {
+    -webkit-animation-delay: -1.5s;
+    animation-delay: -1.5s;
+  }
+  
+  .beatingHeart .heart4 {
+    -webkit-animation-delay: -2.0s;
+    animation-delay: -2.0s;
+  }
+  
+  .beatingHeart .heart5 {
+    -webkit-animation-delay: -2.5s;
+    animation-delay: -2.5s;
+  }
+  
+  @-webkit-keyframes beat {
+    0%, 100% { -webkit-transform: scale(0.0) }
+    50% { -webkit-transform: scale(1.0) }
+  }
+  
+  /*spinner */
+  
+  .spinner {
+    margin: 50px auto 0;
+    width: 100%;
+    text-align: center;
+  }
+  
+  .spinner .heart {
+    width: 50px;
+    height: 45px;
+    display: inline-block;
+    opacity:0.8;
+    
+    -webkit-animation: bouncedelay 1.4s infinite ease-in-out;
+    animation: bouncedelay 1.4s infinite ease-in-out;
+    /* Prevent first frame from flickering when animation starts */
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+  }
+  
+  .heart:before , .heart:after {
+    background: #fe5652;
+  }
+  .spinner .heart1 {
+    -webkit-animation-delay: -0.32s;
+    animation-delay: -0.32s;
+  }
+  
+  .spinner .heart2 {
+    -webkit-animation-delay: -0.16s;
+    animation-delay: -0.16s;
+  }
+  
+  @-webkit-keyframes bouncedelay {
+    0%, 80%, 100% { -webkit-transform: scale(0.0) }
+    40% { -webkit-transform: scale(1.0) }
+  }
+  
+  @keyframes bouncedelay {
+    0%, 80%, 100% { 
+      transform: scale(0.0);
+      -webkit-transform: scale(0.0);
+    } 40% { 
+      transform: scale(1.0);
+      -webkit-transform: scale(1.0);
+    }
+  }
+
+  .spinner {
+      display: none;
+  }
+
+
+
+.grid {
+    background-color: #EEEEEE;
+    /* border-left-color: rgb(15, 1, 1);
+    border-bottom-color: #CCCCCC; */
+    height: 150px;
+    width: 500px;
+    display: flex;
+    align-items: center;
+    display: none;
+}
+.bar-1 {
+    background-color: #fe5652;
+    /* width: 50%; */
+    height: 35px;
+    border-radius: 5px;
 }
