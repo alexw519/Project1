@@ -1,0 +1,16 @@
+body {
+    background-image: url(../images/pinkbckgrnd.png);
+
+}
+
+img {
+    position: relative;
+    height: 200px;
+    width: 200px;
+}
+
+.container {
+    background-color: white;
+    opacity: 15px;
+    
+}
