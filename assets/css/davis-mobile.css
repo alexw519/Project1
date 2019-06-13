@@ -4,14 +4,21 @@ body {
     font-size: 18px;
     line-height: 30px;
     color: #555555;
-    font-weight: 200;
+    font-weight: 200;   
+}
+.page-footer{
+    position:absolute;
+    bottom:0;
+    width:100%;
+    height:60px; 
+    background-color:#fe5652;
+    font-size: 12px;
 }
 
 .centered {
     position: fixed;
     top: 50%;
     left: 50%;
-    /* bring your own prefixes */
     transform: translate(-50%, -50%);
 }
 
@@ -35,7 +42,10 @@ body {
     color: white;
     padding-top: 20px;
 }
-
+#userAge, #userName, #crushName, #dateCity, #faveFood {
+    background-color:white;
+    height: 25px;
+}
 .hide-me-name, .hide-me-crush, .hide-me-city, .hide-me-food {
     display: none;
 }
@@ -1258,20 +1268,38 @@ stretchRight
   }
 
 
-
-.grid {
+#gridParent {
+    display:none;
+}
+#gridChild {
     background-color: #EEEEEE;
-    /* border-left-color: rgb(15, 1, 1);
-    border-bottom-color: #CCCCCC; */
+    border-left: solid;
+    border-left-color: rgb(15, 1, 1);
+    border-bottom: solid;
+    border-bottom-color: rgb(15, 1, 1);
     height: 150px;
-    width: 500px;
-    display: flex;
+    width: 450px;
     align-items: center;
-    display: none;
+    display: flex;
 }
 .bar-1 {
+    color: white;
     background-color: #fe5652;
-    /* width: 50%; */
+    width: 50%;
     height: 35px;
     border-radius: 5px;
+}
+
+#chartTitle {
+    top: -30px;
+    text-align: center;
+    font-size: 22px;
+    color: #fe5652;
+    margin-bottom: 15px;
+}
+
+#chartSubtitle {
+    text-align: center;
+    margin-top: 15px;
+    font-size: 16px;
 }

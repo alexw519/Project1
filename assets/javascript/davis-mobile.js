@@ -64,16 +64,36 @@ function loader() {
     }).then(function (response) {
         console.log(response);
         percentage = response.percentage;
-        $(".grid").show();
-        $("#percentage").text(percentage + "%")
-        $(".bar-1").css("width", percentage)
-    });
+        $("#gridParent").show();
+        $("#chartTitle").text(userName + "'s & " + crushName +"'s Compatibility Score")
+        $("#percentage").text("\xa0"+ percentage + "%")
+        percentage = Number(percentage/100).toLocaleString(undefined,{style: 'percent', minimumFractionDigits:0});
+        $(".bar-1").css("width", percentage);
+        output();
+    }).fail(function(xhr) {
+        var errorMessage = xhr.status + ': ' + xhr.statusText
+        console.log(errorMessage);
+        percentage = Math.floor(Math.random() * 91) + 10;
+        $("#gridParent").show();
+        $("#chartTitle").text(userName + "'s & " + crushName +"'s Compatibility Score")
+        $("#percentage").text("   " + percentage + "%")
+        percentage = Number(percentage/100).toLocaleString(undefined,{style: 'percent', minimumFractionDigits:0}); 
+        console.log(percentage);
+        $(".bar-1").css("width", percentage);  
+        output();
+  })
 
  }
 
-//  function grid() {
-//      $(".grid").show();
-//      $("#percentage").text(percentage + "%")
-//      $(".bar-1").css("width", percentage)
-//   }
+function output() {
+    percentage = parseFloat(percentage) / 100.0;
+    console.log(percentage);
+    if (percentage < .4){
+    $("#chartSubtitle").text("Good things come to those who wait. Why don’t you sit this one out at one of the locations below?")
+    } else if (.4 <= percentage && percentage <= .7) {
+        $("#chartSubtitle").text("Take the next step! How about dinner at one of the restaurants below?")
+    } else {
+        $("#chartSubtitle").text("Bring a ring with you to the restaurant! We have a feeling they might be the one")
+    }
+}
 
