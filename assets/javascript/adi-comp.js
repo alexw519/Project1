@@ -6,13 +6,13 @@ $(document).ready(function() {
       var userName = $("#yourName").val().trim()
       var crushName = $("#yourCrush").val().trim()
       var userAge = $("#yourAge").val().trim()
-      var userCity = $("#yourCity").val().trim()
-      var favoriteFood = $("#favoriteFood").val().trim()
+      var dateCity = $("#dateCity").val().trim()
+      var faveFood = $("#faveFood").val().trim()
     console.log(userName);
     console.log(crushName);
     console.log(userAge);
-    console.log(userCity);
-    console.log(favoriteFood);
-    $("#yourName").css("color", "red");
+    console.log(dateCity);
+    console.log(faveFood);
+    
   });
 });
