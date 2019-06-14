@@ -16,100 +16,54 @@
 </head>
 
 <body>
-    <div class="container">
+    <div class="myContainer">
+        <!-- heart logo -->
         <div id="header">
             <img src="https://files.slack.com/files-pri/TH6SQL9BJ-FK98EAZFT/logowords__2_.png" alt="Next Step"
                 id="logo">
         </div>
-        <div class="row centered">
-            <div class="col s12">
-                <div id="ageObject" class="slideLeft">
-                    Enter Your Age
-                    <input type="number" name="quantity" id="userAge">
-                    <a class="waves-effect waves-teal btn-flat button-css" id="hide-age"><i
-                            class="medium material-icons">chevron_right</i></a>
-                </div>
-            </div>
-        </div>
-        <div class="row centered hide-me-name">
-            <div class="col s12">
-                <div id="userNameObject">
-                    Enter Your Name
-                    <input type="text" name="quantity" id="userName">
-                    <a class="waves-effect waves-teal btn-flat button-css" id="hide-user-name"><i
-                            class="medium material-icons">chevron_right</i></a>
-                </div>
-            </div>
-        </div>
-        <div class="row centered hide-me-crush">
-            <div class="col s12">
-                <div id="crushNameObject">
-                    Enter Crush's Name
-                    <input type="text" name="quantity" id="crushName">
-                    <a class="waves-effect waves-teal btn-flat button-css" id="hide-crush-name"><i
-                            class="medium material-icons">chevron_right</i></a>
-                </div>
-            </div>
-        </div>
-        <div class="row centered hide-me-city">
-            <div class="col s12">
-                <div id="cityObject">
-                    Enter Date Location
-                    <input type="text" name="quantity" id="dateCity">
-                    <a class="waves-effect waves-teal btn-flat button-css" id="hide-date-city"><i
-                            class="medium material-icons">chevron_right</i></a>
-                </div>
-            </div>
-        </div>
-        <div class="row centered hide-me-food">
-            <div class="col s12">
-                <div id="foodObject">
-                    Enter Favorite Cuisine
-                    <input type="text" name="quantity" id="faveFood">
-                    <a class="waves-effect waves-teal btn-flat button-css" id="hide-fave-food"><i
-                            class="large material-icons">chevron_right</i></a>
-                </div>
-            </div>
-        </div>
-        <div class="row centered">
-            <div class="col s12">
-                <div class="spinner">
+     
+        <!-- loading -->
+        
+                <div class="spinner centered">
                     <div class="heart heart1"></div>
                     <div class="heart heart2"></div>
                     <div class="heart heart3"></div>
                     <p id="waitMessage">Love is worth the wait...</p>
                 </div>
-            </div>
-        </div>
+          
+
+        <!-- results -->
         <div class="row centered">
             <div class="col s12">
-                <div id="gridParent">
-                <p id="chartTitle"></p>
-                  <div id="gridChild">
-                      <div class="graph-bar bar-1 stretchRight"><span id="percentage"></span></div>
-                  </div>
-                  <p id="chartSubtitle"></p>
-                </div>
-            </div>
-        </div>
-        <div class="row centered hide-me-food">
-                <div class="col s12">
+                <div id="gridParent" class="centered" >
+                    <p id="chartTitle"></p>
+                    <div id="gridChild">
+                        <div class="graph-bar bar-1 stretchRight"><span id="percentage"></span></div>
+                    </div>
+                    <p id="chartSubtitle"></p>
+                    <br>
                     <div id="googleMap">
                     </div>
                 </div>
             </div>
-    </div>
-    <footer class="page-footer">
-            <div class="footer-copyright">
-              <div class="container">
-              © 2019 Next Step
-              <!-- <a class="grey-text text-lighten-4 right" href="#!">More Links</a> -->
-              </div>
-            </div>
-          </footer>
-    
+        </div>
 
+
+       
     </div>
+    <div id="spacing"></div>
+    <footer class="page-footer footer-copyright">
+        
+            <div class="container">
+                © 2019 Next Step
+                <!-- <a class="grey-text text-lighten-4 right" href="#!">More Links</a> -->
+            </div>
+      
+    </footer>
+
+
+
     <script src="https://code.jquery.com/jquery-3.4.1.js"
         integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
     <script src="assets/javascript/davis-mobile.js"> </script>
