@@ -1,5 +1,5 @@
 //Variable Declarations
-var compatibility = true;
+var compatibility = false;
 var userName;
 var crushName;
 var userAge;
@@ -7,38 +7,76 @@ var dateCity;
 var faveFood;
 var result = 0;
 
+//New Code
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// var queryURL = "https://love-calculator.p.rapidapi.com/getPercentage?fname=John&sname=Alice";
+// $.ajax({
+//     url: queryURL,
+//     method: "GET",
+//     headers: {"X-RapidAPI-Host": "love-calculator.p.rapidapi.com"},
+//     headers: {"X-RapidAPI-Key": "63b007e403msh82e545e4b6ed662p17ad5cjsn9df980f8ea4b"}
+// }).then(function(response)
+// {
+//     console.log(response);
+// })
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//New Code
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// $("#maps").html("<iframe width='600' height='450' frameborder='0' style='border:0' src='https://www.google.com/maps/embed/v1/search?q=" + faveFood + "+in+" + city + "&key=AIzaSyDNR4NPh6CTtgRWlpI-HSMop8makDVAMDM' allowfullscreen></iframe>");
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //When the submit button is clicked
 $("#submitButton").on("click", function()
 {
-    userName = $("userName").val().trim();
-    crushName = $("crushName").val().trim();
+    event.preventDefault();
+    userName = $("#userName").val().trim();
+    crushName = $("#crushName").val().trim();
     userAge = $("#userAge").val().trim();
-    dateCity = $("dateCity").val().trim();
-    faveFood = $("faveFood").val().trim();
+    dateCity = $("#dateCity").val().trim();
+    faveFood = $("#faveFood").val().trim();
 
     //Checking for blank fields before submission
     // if(userName || crushName || dateCity || faveFood || userAge === "")
     if(userName === "" || crushName === "" || dateCity === "" || faveFood === "" || userAge === "")
     {
-        //error message
+        alert("You Missed A Few Fields");
+        // if(userName === "")
+        //     $("#userName").css("border", "red");
+        // if(crushName === "")
+        //     $("#crushName").css("border", "red");
+        // if(dateCity === "")
+        //     $("#dateCity").css("border", "red");
+        // if(faveFood === "")
+        //     $("#faveFood").css("border", "red");
+        // if(userAge === "")
+        //     $("#userAge").css("border", "red");
+        event.preventDefault();
     }
-
-    //Making sure a number is inserted and seeing if the user is 21
-    if ( $.isNumeric(age) === false)
+else
+{
+    //Making sure a number is inserted
+    if (isNaN(userAge))
     {
-        //don't process the rest, see if can make field only accept numbers
+        //error message
+        alert("Not A Number");
+        event.preventDefault();
+        //see if can make field only accept numbers
     }
-
+else
+{
+    //Branches depending on the age of the user
     if (userAge >= 21)
         ofAgeSuggestions();
     else
         underAgeSuggestions();
+}
+}
 })
 
 //Suggests based on compatibility and if the user is of age
-ofAgeSuggestions()
+function ofAgeSuggestions()
 {
-    compatibility = compadCheck();
+    // compatibility = compadCheck();
     if (!compatibility)
     {
         barSuggest();
@@ -51,7 +89,7 @@ ofAgeSuggestions()
 }
 
 //Suggests based on compatibility and if the user is underage
-underAgeSuggestions()
+function underAgeSuggestions()
 {
     if (!compatibility)
     {
@@ -67,23 +105,33 @@ underAgeSuggestions()
 //Suggests a resturaunt based off of location using Google Maps
 function faveFoodSuggest()
 {
-    var city = dateCity;
-    //Ajax using google maps to look at resturaunts around the city (uses favefood as search)
-    //not sure if we need to use the zomato app because google maps pulls up resturaunts
+    callMap(faveFood, dateCity);
 }
 
-//Suggests a bar based off of location using Google Maps
+//Suggests a bar based off of current location using Google Maps
 function barSuggest()
 {
-    var city = dateCity;
-    //ajax using googlemaps to look at bars around the city
+    var localURL = "http://ip-api.com/json/";
+    $.ajax({
+        url: localURL,
+        method: "GET"
+    }).then(function(response)
+    {
+        callMap("bar", response.city);
+    })
 }
 
-//Suggests a ice cream parlor based off of location using Google Maps
+//Suggests a ice cream parlor based off of current location using Google Maps
 function iceCreamSuggest()
 {
-    var city = dateCity;
-    //ajax using google maps to look at ice cream places around the city (uses ice cream as search)
+    var localURL = "http://ip-api.com/json/";
+    $.ajax({
+        url: localURL,
+        method: "GET"
+    }).then(function(response)
+    {
+        callMap("ice cream", response.city);
+    })
 }
 
 function compadCheck()
@@ -95,6 +143,9 @@ function compadCheck()
         return false;
 }
 
-
+function callMap(food, city)
+{
+    $("#maps").html("<iframe width='600' height='450' frameborder='0' style='border:0' src='https://www.google.com/maps/embed/v1/search?q=" + food + "+in+" + city + "&key=AIzaSyDNR4NPh6CTtgRWlpI-HSMop8makDVAMDM&zoom=' allowfullscreen></iframe>");
+}
 
 
