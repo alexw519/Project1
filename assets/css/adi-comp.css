@@ -1,0 +1,16 @@
+body {
+    background-image: url(../images/abstract-painting-art-artistic-1279500.jpg);
+    background-size: 50% 50%;
+}
+
+img {
+    position: relative;
+    height: 200px;
+    width: 200px;
+}
+
+.container {
+    background-color: white;
+    opacity: 15px;
+    
+}
