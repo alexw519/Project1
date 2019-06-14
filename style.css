@@ -1,100 +1,15 @@
-button {
-    text-transform: uppercase;
-    font-weight: bold;
-    background: rgb(150, 235, 241);
-    border: 3px solid darkblue;
-    margin-left: 5px;
-    border-radius: 15px;
-    color: rgb(26, 54, 54);
-    width: 150px;
-    letter-spacing: 2px;
+body {
+    padding:0;
+    margin:0;
+    overflow:hidden;
+	height: 600px;
 }
-
-.btnGif:hover, .btnGif.color-bg {
-    /* background-color:#99ee99;  */
-    background-color: red;
-    outline: 0;
+canvas {
+    padding:0;
+    margin:0;
 }
-
-h1 {
-    display: inline-block;
-    font-size: 100px;
-    padding: 30px;
-    width: 420px;
-    background-color: white;
-    font-family: 'Londrina Solid', cursive;
-    border-radius: 15px;
-    letter-spacing: 1.5px;
-}
-
-h3{
-    display: inline-block;
-    font-size: 20px;
-    padding: 30px;
-    width: 420px;
-    justify-content: center;
-    align-content: center;
-    background-color: white;
-    font-family: 'Londrina Solid', cursive;
-    border-radius: 15px;
-    letter-spacing: 1.5px;  
-    margin: 20px;
-    margin-bottom: 50px;
-    margin-left:70px;
-}
-
-#new-animal-form {
-    float: right;
-    background-color: white;
-    font-weight: bold;
-    padding: 30px;
-    font-family: 'Londrina Solid', cursive;
-    font-size: 20px;
-    border-radius: 15px;
-}
-
-#buttons-view {
-    padding-top: 30px;
-    padding-bottom: 30px;
-    font-family: 'Londrina Solid', cursive;
-    font-size: 20px;
-}
-
-#find-gif {
-    border-radius: 15px;
-    width: 100px;
-    background: lightseagreen;
-    letter-spacing: 1.5px;
-    outline: 0;
-}
-
-#find-gif:hover{
-    background: rgb(36, 143, 137); 
-}
-
-label {
-    letter-spacing: 1.5px;
-}
-
-#gif-input {
-    border-radius: 15px;
-    background: rgb(248, 212, 218);
-    outline: 0;
-}
-
-img {
-    border-radius: 15px;
-    border: 6px solid rgb(151, 225, 235);
-    margin: 10px;
-    position:relative;
-    z-index: 1;
-}
-
- span {
-    font-weight: bold;
-    font-family: 'Londrina Solid', cursive;
-    font-size: 20px;
-    display: inline-block;
-    position:absolute;
-    z-index: 1000;
+div.btnbg {
+    position:fixed;
+    left:0;
+    top:0;
 }
