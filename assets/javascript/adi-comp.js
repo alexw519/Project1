@@ -15,37 +15,49 @@ firebase.initializeApp(firebaseConfig);
 
 var database=firebase.database();
 
+// array to hold the questions
   var index=0;
   var questionArray = [
     { question: "Your Name"},
-    { question: "Your Crush's Name"}
+    { question: "Your Crush's Name"},
+    { question: "Where you want to have your date"},
+    { question: "Your favorite type of food"}
     
   ];
 
+  // click on start to see the first question
   $("#start").on("click", showQuestion); 
 
+// showing the questions
 function showQuestion() {
   event.preventDefault();
+// if the question array is smaller than the index
   if(index < questionArray.length) {
-
+// in the display div will be the question shown
     $("#display").html(questionArray[index].question);
-
-    var userAnswer = $("<textarea class='materialize-textarea'`></textarea>");
-    
-      $("#response").html(userAnswer);
+// and a dynamic text area
+    var userAnswer = $("<textarea id='response' class='materialize-textarea'`></textarea>");
+    // in the div with id response
+    $("#response").html(userAnswer);
+// loop to go through all of the quesitons
+    for (var i = 0; i < questionArray.length; i++) {
+      index++
     
         
-      function submitButton() {
-        $("#submit").on("click", index++)
+    }
+    // when submit is clicked
+        $("#submit").on("click", function() {
+// the date
         
-        database.ref().push(userAnswer);
+        var userInfo = userAnswer.val().trim();
+        index++
+        database.ref().push(userInfo);
+    console.log("nah" + userInfo);
+    
+  })
 
-        var userInfo = userAnswer.val();
+  }
 
-    console.log(userInfo);
-      }
-      submitButton();
-}
 }
 
 
