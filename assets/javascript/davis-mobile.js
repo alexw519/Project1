@@ -77,9 +77,6 @@ $(document).on("click", "#next-question",function () {
  
 });
 
-//Love calculator api
-
-
 function loveCalculator() {
 
     var {userName, crushName} = userResponse;
