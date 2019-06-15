@@ -29,7 +29,7 @@ img {
 
 
 
-
+/* 
 body {
     padding:0;
     margin:0;
@@ -49,6 +49,56 @@ div.btnbg {
     position:fixed;
     left:0;
     top:0;
+} */
+
+body {
+    background-color: #F4F4F4;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 18px;
+    line-height: 30px;
+    color: #555555;
+    font-weight: 200;  
+	background: linear-gradient(-45deg, #f39593, #F4F4F4, #f9a8a8, white);
+	background-size: 400% 400%;
+	-webkit-animation: Gradient 15s ease infinite;
+	-moz-animation: Gradient 15s ease infinite;
+	animation: Gradient 15s ease infinite;
+}
+
+@-webkit-keyframes Gradient {
+	0% {
+		background-position: 0% 50%
+	}
+	50% {
+		background-position: 100% 50%
+	}
+	100% {
+		background-position: 0% 50%
+	}
+}
+
+@-moz-keyframes Gradient {
+	0% {
+		background-position: 0% 50%
+	}
+	50% {
+		background-position: 100% 50%
+	}
+	100% {
+		background-position: 0% 50%
+	}
+}
+
+@keyframes Gradient {
+	0% {
+		background-position: 0% 50%
+	}
+	50% {
+		background-position: 100% 50%
+	}
+	100% {
+		background-position: 0% 50%
+	}
 }
 
 #gridParent {
@@ -86,3 +136,91 @@ div.btnbg {
     margin-top: 15px;
     font-size: 16px;
 }
+
+
+.fallingHearts {
+    text-align: center;
+    z-index: -1;
+}
+.fallingHearts span {
+    display: inline-block;
+    width: 48px;
+    height: 48px;
+	margin: -280px 40px 54px  -34px;
+    background:url("../images/iconfinder_jee-68_2180672\ \(1\).png");
+    
+    -webkit-animation: fallingHearts 10s infinite  linear;
+    -moz-animation: fallingHearts 10s infinite  linear;
+    z-index: -2;
+}
+.fallingHearts span:nth-child(5n+5) {
+
+    -webkit-animation-delay: 1.3s;
+    -moz-animation-delay: 1.3s;
+}
+.fallingHearts span:nth-child(3n+2) {
+
+    -webkit-animation-delay: 1.5s;
+    -moz-animation-delay: 1.5s;
+}
+.fallingHearts span:nth-child(2n+5) {
+
+    -webkit-animation-delay: 1.7s;
+    -moz-animation-delay: 1.7s;
+}
+
+.fallingHearts span:nth-child(3n+10) {
+
+    -webkit-animation-delay: 2.7s;
+    -moz-animation-delay: 2.7s;
+}
+.fallingHearts span:nth-child(7n+2) {
+
+    -webkit-animation-delay: 3.5s;
+    -moz-animation-delay: 3.5s;
+}
+.fallingHearts span:nth-child(4n+5) {
+
+    -webkit-animation-delay: 5.5s;
+    -moz-animation-delay: 5.5s;
+}
+.fallingHearts span:nth-child(3n+7) {
+
+    -webkit-animation-delay: 8s;
+    -moz-animation-delay: 8s;
+}
+@-webkit-keyframes fallingHearts {
+  0% {
+    opacity: 1;
+
+	-webkit-transform: translate(0, 0px) rotateZ(0deg);
+  }
+  75% {
+    opacity: 1;
+
+	-webkit-transform: translate(100px, 600px) rotateZ(270deg); 
+  }
+  100% {
+    opacity: 0;
+
+	-webkit-transform: translate(150px, 800px) rotateZ(360deg);
+  }
+}
+@-moz-keyframes fallingHearts {
+  0% {
+    opacity: 1;
+    
+	-webkit-transform: translate(0, 0px) rotateZ(0deg);
+  }
+  75% {
+    opacity: 1;
+   
+	-webkit-transform: translate(100px, 600px) rotateZ(270deg); 
+  }
+  100% {
+    opacity: 0;
+    
+	-webkit-transform: translate(150px, 800px) rotateZ(360deg);
+  }
+}
+
