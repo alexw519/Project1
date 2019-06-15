@@ -61,6 +61,12 @@ body {
 
 .button-css {
     color: white;
+    text-transform: capitalize;
+}
+
+.resetBtn {
+    color: white;
+    text-transform: capitalize;
 }
 
 

@@ -32,7 +32,8 @@ var prompt = [
     }
 
 ]
-
+var resetBtn = $('<input type="button" value="Not the one? Try again!"/>');
+resetBtn.addClass('waves-effect').addClass('waves-light').addClass('btn').addClass('resetBtn');
 var i =0;
 
 
@@ -119,7 +120,6 @@ $(document).on("click", "#next-question",function () {
         console.log(percentage);
         $(".bar-1").css("width", percentage);  
         output();
-        placeMap();
   })
 
  }
@@ -129,21 +129,27 @@ function output() {
     percentage = parseFloat(percentage) / 100.0;
     console.log(percentage);
     if (percentage < .4 && userAge < 21){
-    $("#chartSubtitle").text("Good things come to those who wait. Why don’t you hit up an ice cream shop nearby?");
+    $("#chartSubtitle").text("Good things come to those who wait. Why not hit up an ice cream shop nearby?");
     iceCreamSuggest();
+    $("#resetBtn").append(resetBtn);
     } else if (percentage < .4 && userAge >= 21){
-        $("#chartSubtitle").text("Good things come to those who wait. Why not wait drunk at a bar nearby?");
+        $("#chartSubtitle").text("Good things come to those who wait. Why not hit up a bar nearby?");
         barSuggest();
+        $("#resetBtn").append(resetBtn);
     } else if (.4 <= percentage && percentage <= .7) {
-        $("#chartSubtitle").text("Take the next step! How about dinner at one of the restaurants below?")
+        $("#chartSubtitle").text("Take the next step! How about dinner at one of the restaurants below?");
+        placeMap();
+        $("#resetBtn").append(resetBtn);
     } else {
-        $("#chartSubtitle").text("Bring a ring with you to the restaurant! We have a feeling they might be the one")
+        placeMap();
+        $("#chartSubtitle").text("Bring a ring with you to the restaurant! We have a feeling they might be the one :)");
+        $("#resetBtn").append(resetBtn);
     }
 }
 
 function placeMap() {
     var {dateCity, faveFood} = userResponse;
-$("#googleMap").html("<iframe width='450' height='350' margin: '0 auto' frameborder='0' style='border:0' src='https://www.google.com/maps/embed/v1/search?q=" + faveFood + "+in+" + dateCity + "&key=AIzaSyDNR4NPh6CTtgRWlpI-HSMop8makDVAMDM' allowfullscreen></iframe>");
+$("#googleMap").html("<iframe width='450' height='350' frameborder='0' style='border:0' src='https://www.google.com/maps/embed/v1/search?q=" + faveFood + "+in+" + dateCity + "&key=AIzaSyDNR4NPh6CTtgRWlpI-HSMop8makDVAMDM' allowfullscreen></iframe>");
 }
 
 // DAVIS TO CONFIGURE THIS
@@ -159,6 +165,7 @@ function iceCreamSuggest()
         callMap("ice cream", response.city);
     })
 }
+
 function barSuggest()
 {
     var localURL = "http://ip-api.com/json/";
@@ -171,8 +178,11 @@ function barSuggest()
     })
 }
 
-function callMap()
+function callMap(faveFood, dateCity)
 {
-    var {dateCity, faveFood} = userResponse;
-    $("#googleMap").html("<iframe width='600' height='450' frameborder='0' style='border:0' src='https://www.google.com/maps/embed/v1/search?q=" + faveFood + "+in+" + dateCity + "&key=AIzaSyDNR4NPh6CTtgRWlpI-HSMop8makDVAMDM&zoom=' allowfullscreen></iframe>");
+    $("#googleMap").html("<iframe width='450' height='350' frameborder='0' style='border:0' src='https://www.google.com/maps/embed/v1/search?q=" + faveFood + "+in+" + dateCity + "&key=AIzaSyDNR4NPh6CTtgRWlpI-HSMop8makDVAMDM&zoom=15' allowfullscreen></iframe>");
 }
+
+$('#resetBtn').click(function() {
+    location.reload();
+});
