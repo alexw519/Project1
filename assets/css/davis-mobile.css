@@ -77,7 +77,9 @@ body {
     color: #fe5652;
     text-align: center;
 }
-
+#resetBtn, #resultsBtn {
+    display:inline-block;
+}
 #ageObject  {
     display: block;
     height: 180px;
@@ -92,6 +94,7 @@ body {
     text-align: center;
     color: white;
     padding-top: 20px;
+    z-index:4;
 }
 #userAge, #userName, #crushName, #dateCity, #faveFood {
     background-color:white;
@@ -1405,42 +1408,90 @@ stretchRight
 #googleMap {
     margin: 0 auto;
 }
-.fallingLeaves span {
-    display: inline-block;
-    width: 80px;
-    height: 80px;
-    margin: -280px 40px 54px -34px;
-    background:url("../images/heart.png");
-    
-    -webkit-animation: fallingLeaves 10s infinite linear;
-    -moz-animation: fallingLeaves 10s infinite linear;
-    }
 
-.fallingLeaves span:nth-child(5n+5) {
-    -webkit-animation-delay: 1s;
-    -moz-animation-delay: 1s;
-    }
-    .fallingLeaves span:nth-child(3n+2) {
+.fallingHearts {
+    text-align: center;
+    z-index: -1;
+}
+.fallingHearts span {
+    display: inline-block;
+    width: 48px;
+    height: 48px;
+	margin: -280px 40px 54px  -34px;
+    background:url("../images/iconfinder_jee-68_2180672\ \(1\).png");
+    
+    -webkit-animation: fallingHearts 10s infinite  linear;
+    -moz-animation: fallingHearts 10s infinite  linear;
+    z-index: -2;
+}
+.fallingHearts span:nth-child(5n+5) {
+
+    -webkit-animation-delay: 1.3s;
+    -moz-animation-delay: 1.3s;
+}
+.fallingHearts span:nth-child(3n+2) {
+
     -webkit-animation-delay: 1.5s;
     -moz-animation-delay: 1.5s;
-    }
-    
-    .fallingLeaves span:nth-child(2n+5) {
+}
+.fallingHearts span:nth-child(2n+5) {
+
     -webkit-animation-delay: 1.7s;
     -moz-animation-delay: 1.7s;
-    };
+}
 
-@-webkit-keyframes fallingLeaves {
-    0% {
+.fallingHearts span:nth-child(3n+10) {
+
+    -webkit-animation-delay: 2.7s;
+    -moz-animation-delay: 2.7s;
+}
+.fallingHearts span:nth-child(7n+2) {
+
+    -webkit-animation-delay: 3.5s;
+    -moz-animation-delay: 3.5s;
+}
+.fallingHearts span:nth-child(4n+5) {
+
+    -webkit-animation-delay: 5.5s;
+    -moz-animation-delay: 5.5s;
+}
+.fallingHearts span:nth-child(3n+7) {
+
+    -webkit-animation-delay: 8s;
+    -moz-animation-delay: 8s;
+}
+@-webkit-keyframes fallingHearts {
+  0% {
     opacity: 1;
-    -webkit-transform: translate(0, 0px) rotateZ(0deg);
-    }
-    75% {
+
+	-webkit-transform: translate(0, 0px) rotateZ(0deg);
+  }
+  75% {
     opacity: 1;
-    -webkit-transform: translate(100px, 600px) rotateZ(270deg);
-    }
-    100% {
+
+	-webkit-transform: translate(100px, 600px) rotateZ(270deg); 
+  }
+  100% {
     opacity: 0;
-    -webkit-transform: translate(150px, 800px) rotateZ(360deg);
-    }
-    }
+
+	-webkit-transform: translate(150px, 800px) rotateZ(360deg);
+  }
+}
+@-moz-keyframes fallingHearts {
+  0% {
+    opacity: 1;
+    
+	-webkit-transform: translate(0, 0px) rotateZ(0deg);
+  }
+  75% {
+    opacity: 1;
+   
+	-webkit-transform: translate(100px, 600px) rotateZ(270deg); 
+  }
+  100% {
+    opacity: 0;
+    
+	-webkit-transform: translate(150px, 800px) rotateZ(360deg);
+  }
+}
+

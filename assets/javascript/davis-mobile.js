@@ -1,9 +1,6 @@
 var percentage = "";
 var spacing = '\xa0\xa0';
-
-
 var userResponse = {};
-
 var prompt = [
     {
         message: "Enter Your Age",
@@ -34,6 +31,8 @@ var prompt = [
 ]
 var resetBtn = $('<input type="button" value="Not the one? Try again!"/>');
 resetBtn.addClass('waves-effect').addClass('waves-light').addClass('btn').addClass('lighten-2').addClass('hoverable');
+var resultsBtn = $('<input type="button" value="I\'ll risk it"/>');
+resultsBtn.addClass('waves-effect').addClass('waves-light').addClass('btn').addClass('lighten-2').addClass('hoverable').attr("float","left");
 var i =0;
 
 
@@ -103,6 +102,7 @@ $(document).on("click", "#next-question",function () {
         headers: {"X-RapidAPI-Key": "e6021ca9a5msh5763cf5deefbf36p1059e8jsn2fea555b0671"},
     }).then(function (response) {
         $(".spinner").hide();
+        $(".fallingHearts").hide();
         console.log(response);
         percentage = response.percentage;
         $("#gridParent").show();
@@ -114,6 +114,7 @@ $(document).on("click", "#next-question",function () {
         placeMap();
     }).fail(function(xhr) {
         $(".spinner").hide();
+        $(".fallingHearts").hide();
         var errorMessage = xhr.status + ': ' + xhr.statusText
         console.log(errorMessage);
         percentage = Math.floor(Math.random() * 91) + 10;
@@ -136,10 +137,12 @@ function output() {
     $("#chartSubtitle").text("Good things come to those who wait. Why not wait at an ice cream shop nearby?");
     iceCreamSuggest();
     $("#resetBtn").append(resetBtn);
+    $("#resultsBtn").append(resultsBtn)
     } else if (percentage < .4 && userAge >= 21){
         $("#chartSubtitle").text("Good things come to those who wait. Why not wait at a bar nearby?");
         barSuggest();
         $("#resetBtn").append(resetBtn);
+        $("#resultsBtn").append(resultsBtn)
     } else if (.4 <= percentage && percentage <= .7) {
         $("#chartSubtitle").text("Take the next step! How about dinner at one of the restaurants below?");
         placeMap();
@@ -189,3 +192,16 @@ function callMap(faveFood, dateCity)
 $('#resetBtn').click(function() {
     location.reload();
 });
+
+$('#resultsBtn').click(function(){
+    event.preventDefault();
+    placeMap();
+    console.log("Button Clicked");
+})
+
+// $(document).on("click", ".optionBtn", function () {
+//     // event.preventDefault() prevents submit button from trying to send a form.
+//     event.preventDefault();
+//     callMap();
+//     console.log("Button Clicked");
+// })
