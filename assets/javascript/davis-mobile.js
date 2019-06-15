@@ -51,9 +51,6 @@ function displayPrompt(arr, i) {
     return promptBox
 }
 
-
-
-
 var next = true;
 
 var box = $('<div>')
@@ -61,10 +58,6 @@ var box = $('<div>')
 $(".myContainer").append(box);
 
 box.html(displayPrompt(prompt, i)) 
-
-
-
-
 
 $(document).on("click", "#next-question",function () {
     console.log(i);
@@ -128,13 +121,15 @@ function output() {
     var {userAge} = userResponse;
     percentage = parseFloat(percentage) / 100.0;
     console.log(percentage);
+
     if (percentage < .4 && userAge < 21){
     $("#chartSubtitle").text("Good things come to those who wait. Why don’t you hit up an ice cream shop nearby?");
     iceCreamSuggest();
     } else if (percentage < .4 && userAge >= 21){
         $("#chartSubtitle").text("Good things come to those who wait. Why not wait drunk at a bar nearby?");
         barSuggest();
-    } else if (.4 <= percentage && percentage <= .7) {
+    } 
+    else if (.4 <= percentage && percentage <= .7) {
         $("#chartSubtitle").text("Take the next step! How about dinner at one of the restaurants below?")
     } else {
         $("#chartSubtitle").text("Bring a ring with you to the restaurant! We have a feeling they might be the one")
