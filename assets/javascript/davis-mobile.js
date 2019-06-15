@@ -59,6 +59,8 @@ var next = true;
 
 var box = $('<div>')
 
+
+
 $(".myContainer").append(box);
 
 box.html(displayPrompt(prompt, i)) 
