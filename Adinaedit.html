@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Mobile Layout</title>
+    <link rel="stylesheet" href="./assets/css/reset.css">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="./assets/css/davis-mobile.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</head>
+
+<body>
+    <div class="myContainer">
+        <!-- heart logo -->
+        <div id="header">
+            <img src="https://files.slack.com/files-pri/TH6SQL9BJ-FK98EAZFT/logowords__2_.png" alt="Next Step"
+                id="logo">
+        </div>
+
+        <!-- loading -->
+
+        <div class="spinner centered">
+            <div class="heart heart1"></div>
+            <div class="heart heart2"></div>
+            <div class="heart heart3"></div>
+            <p id="waitMessage">Love is worth the wait...</p>
+        </div>
+
+
+        <!-- results -->
+        <div class="row centered">
+            <div class="col s12">
+                <div id="gridParent" class="centered">
+                    <p id="chartTitle"></p>
+                    <div id="gridChild">
+                        <div class="graph-bar bar-1 stretchRight"><span id="percentage"></span></div>
+                    </div>
+                    <p id="chartSubtitle"></p>
+                    <br>
+                    <div id="googleMap">
+                    </div>
+                    <div id = "addButton"></div>
+                    <br>
+                    <div id="zomato">
+                        <!-- <div class="widget_wrap" style="width:400px;height:500px;display:inline-block"></div> -->
+                        <div class="widget_wrap">
+                            <style>
+                                widget_wrap {
+                                    width: 400px;
+                                    height: 500px;
+                                    display: inline-block
+                                }
+                            </style>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div id="spacing"></div>
+        <footer class="page-footer footer-copyright">
+
+            <div class="container">
+                © 2019 Next Step
+                <!-- <a class="grey-text text-lighten-4 right" href="#!">More Links</a> -->
+            </div>
+
+        </footer>
+
+
+
+        <script src="https://code.jquery.com/jquery-3.4.1.js"
+            integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+        <script src="Adinaedit.js"> </script>
+</body>
+
+</html>
