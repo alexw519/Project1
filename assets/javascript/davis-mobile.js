@@ -131,9 +131,11 @@ function output() {
     if (percentage < .4 && userAge < 21){
     $("#chartSubtitle").text("Good things come to those who wait. Why don’t you hit up an ice cream shop nearby?");
     iceCreamSuggest();
+    callButton();
     } else if (percentage < .4 && userAge >= 21){
         $("#chartSubtitle").text("Good things come to those who wait. Why not wait drunk at a bar nearby?");
         barSuggest();
+        callButton();
     } else if (.4 <= percentage && percentage <= .7) {
         $("#chartSubtitle").text("Take the next step! How about dinner at one of the restaurants below?")
     } else {
@@ -150,7 +152,6 @@ $("#googleMap").html("<iframe width='450' height='350' margin: '0 auto' framebor
 function zomatoApi(){
     $("#zomato").html("<iframe src='https://www.zomato.com/widgets/res_search_widget.php?city_id=292&theme=red&widgetType=custom&sort=popularity' style='position:relative;width:100%;height:100%;' border='0' frameborder='0'></iframe>");
 }
-
 
 
 // DAVIS TO CONFIGURE THIS
@@ -183,4 +184,9 @@ function callMap()
     var {dateCity, faveFood} = userResponse;
     $("#googleMap").html("<iframe width='600' height='450' frameborder='0' style='border:0' src='https://www.google.com/maps/embed/v1/search?q=" + faveFood + "+in+" + dateCity + "&key=AIzaSyDNR4NPh6CTtgRWlpI-HSMop8makDVAMDM&zoom=12' allowfullscreen></iframe>");
     zomatoApi();
+}
+
+function callButton(){
+
+
 }
