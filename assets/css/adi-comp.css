@@ -15,12 +15,27 @@ img {
     position: fixed;
     opacity: 0.6;
     background-color: #ffffff;
-    z-index: 2;
+    z-index: 1;
     width: 960px;
     overflow: scroll; 
     height: 100%;
 }
 
+#response {
+    position: relative;
+    z-index: 2;
+}
+
+#display {
+    position: relative;
+    z-index: 3;
+}
+
+button {
+    position: relative;
+    z-index: 5;
+    top: 200px;
+}
 
 body {
     padding:0;
@@ -42,4 +57,40 @@ div.btnbg {
     position:fixed;
     left:0;
     top:0;
+}
+
+#gridParent {
+    display:none;
+}
+#gridChild {
+    margin: 0 auto;
+    background-color: #EEEEEE;
+    border-left: solid;
+    border-left-color: rgb(15, 1, 1);
+    border-bottom: solid;
+    border-bottom-color: rgb(15, 1, 1);
+    height: 150px;
+    width: 450px;
+    align-items: center;
+    display: flex;
+}
+.bar-1 {
+    color: white;
+    background-color: #fe5652;
+    width: 50%;
+    height: 35px;
+    border-radius: 5px;
+}
+#chartTitle {
+    top: -30px;
+    text-align: center;
+    font-size: 22px;
+    color: #fe5652;
+    margin-bottom: 15px;
+}
+#chartSubtitle {
+    margin: 0 auto;
+    text-align: center;
+    margin-top: 15px;
+    font-size: 16px;
 }

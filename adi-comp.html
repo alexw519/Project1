@@ -11,9 +11,9 @@
 
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 
-<!-- Firebase -->
-<script src="https://www.gstatic.com/firebasejs/6.0.4/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/6.0.4/firebase-database.js"></script>
+        <!-- Firebase -->
+        <script src="https://www.gstatic.com/firebasejs/6.0.4/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/6.0.4/firebase-database.js"></script>
 
         <!-- Compiled and minified CSS -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
@@ -32,97 +32,49 @@
     <body>
 
         <div class="container">
-                <img src="./assets/images/LogoWords (2).png">
+            <img src="./assets/images/LogoWords (2).png">
 
             <div class="transbox">
+
                 <div id="display"></div>
                 <div id="response"></div>
-                <!-- <div class="form">
-                    <div class="row">
-                        <form class="col s12">
-                            <div class="row">
-                                <div class="input-field col s12">
-                                    <textarea id="yourName" class="materialize-textarea"></textarea>
-                                    <label for="yourName">Your Name</label>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div> -->
 
-                <!-- <div class="form">
-                    <div class="row">
-                        <form class="col s12">
-                            <div class="row">
-                                <div class="input-field col s12">
-                                    <textarea id="yourCrush" class="materialize-textarea"></textarea>
-                                    <label for="yourCrush">Your Crush's Name</label>
-                                </div>
+                <div class="row centered">
+                    <div class="col s12">
+                        <div id="gridParent" class="centered">
+                            <p id="chartTitle"></p>
+                            <div id="gridChild">
+                                <div class="graph-bar bar-1 stretchRight"><span id="percentage"></span></div>
                             </div>
-                        </form>
+
+                         </div>  
                     </div>
+
                 </div>
-
-                <div class="form">
-                    <div class="row">
-                        <form class="col s12">
-                            <div class="row">
-                                <div class="input-field col s12">
-                                    <textarea id="yourAge" class="materialize-textarea"></textarea>
-                                    <label for="yourAge">Your Age</label>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-
-                <div class="form">
-                    <div class="row">
-                        <form class="col s12">
-                            <div class="row">
-                                <div class="input-field col s12">
-                                    <textarea id="dateCity" class="materialize-textarea"></textarea>
-                                    <label for="dateCity">Your City</label>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-
-                <div class="form">
-                    <div class="row">
-                        <form class="col s12">
-                            <div class="row">
-                                <div class="input-field col s12">
-                                    <textarea id="favoriteFood" class="materialize-textarea"></textarea>
-                                    <label for="faveFood">You (or your crush's) Favorite Food</label>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div> -->
-
-                <button class="btn waves-effect waves-light" type="button" id="start" name="action">Start
-                        <i class="material-icons right">favorite</i>
-                    </button>
-
-                <button class="btn waves-effect waves-light" type="submit" id="submit" name="action">Submit
-                    <i class="material-icons right">favorite</i>
-                </button>
-
-        <!-- <div id="maps"></div> -->
-
 
             </div>
+
+            <button class="btn waves-effect waves-light" type="button" id="start" name="action">Start
+                <i class="material-icons right">favorite</i>
+            </button>
+
+            <button class="btn waves-effect waves-light" type="submit" id="submit" name="action">Submit
+                <i class="material-icons right">favorite</i>
+            </button>
+
+            <div id="maps"></div>
+
+
         </div>
 
 
-        <canvas id="sakura"></canvas>
-<div class="btnbg">
-</div>
 
-<!-- sakura shader -->
-<script id="sakura_point_vsh" type="x-shader/x_vertex">
+        <canvas id="sakura"></canvas>
+        <div class="btnbg">
+        </div>
+
+        <!-- sakura shader -->
+        <script id="sakura_point_vsh" type="x-shader/x_vertex">
 uniform mat4 uProjection;
 uniform mat4 uModelview;
 uniform vec3 uResolution;
@@ -214,7 +166,7 @@ void main(void) {
     distancefade = min(1.0, exp((uFade.x - pdist) * 0.69315 / uFade.y));
 }
 </script>
-<script id="sakura_point_fsh" type="x-shader/x_fragment">
+        <script id="sakura_point_fsh" type="x-shader/x_fragment">
 #ifdef GL_ES
 //precision mediump float;
 precision highp float;
@@ -286,8 +238,8 @@ void main(void) {
     gl_FragColor = vec4(col * 0.5, alpha);
 }
 </script>
-<!-- effects -->
-<script id="fx_common_vsh" type="x-shader/x_vertex">
+        <!-- effects -->
+        <script id="fx_common_vsh" type="x-shader/x_vertex">
 uniform vec3 uResolution;
 attribute vec2 aPosition;
 
@@ -300,7 +252,7 @@ void main(void) {
     screenCoord = aPosition.xy * vec2(uResolution.z, 1.0);
 }
 </script>
-<script id="bg_fsh" type="x-shader/x_fragment">
+        <script id="bg_fsh" type="x-shader/x_fragment">
 #ifdef GL_ES
 //precision mediump float;
 precision highp float;
@@ -320,7 +272,7 @@ void main(void) {
     gl_FragColor = vec4(col * 0.5, 1.0);
 }
 </script>
-<script id="fx_brightbuf_fsh" type="x-shader/x_fragment">
+        <script id="fx_brightbuf_fsh" type="x-shader/x_fragment">
 #ifdef GL_ES
 //precision mediump float;
 precision highp float;
@@ -336,7 +288,7 @@ void main(void) {
     gl_FragColor = vec4(col.rgb * 2.0 - vec3(0.5), 1.0);
 }
 </script>
-<script id="fx_dirblur_r4_fsh" type="x-shader/x_fragment">
+        <script id="fx_dirblur_r4_fsh" type="x-shader/x_fragment">
 #ifdef GL_ES
 //precision mediump float;
 precision highp float;
@@ -357,8 +309,8 @@ void main(void) {
     gl_FragColor = col / 5.0;
 }
 </script>
-<!-- effect fragment shader template -->
-<script id="fx_common_fsh" type="x-shader/x_fragment">
+        <!-- effect fragment shader template -->
+        <script id="fx_common_fsh" type="x-shader/x_fragment">
 #ifdef GL_ES
 //precision mediump float;
 precision highp float;
@@ -373,8 +325,8 @@ void main(void) {
     gl_FragColor = texture2D(uSrc, texCoord);
 }
 </script>
-<!-- post processing -->
-<script id="pp_final_vsh" type="x-shader/x_vertex">
+        <!-- post processing -->
+        <script id="pp_final_vsh" type="x-shader/x_vertex">
 uniform vec3 uResolution;
 attribute vec2 aPosition;
 varying vec2 texCoord;
@@ -385,7 +337,7 @@ void main(void) {
     screenCoord = aPosition.xy * vec2(uResolution.z, 1.0);
 }
 </script>
-<script id="pp_final_fsh" type="x-shader/x_fragment">
+        <script id="pp_final_fsh" type="x-shader/x_fragment">
 #ifdef GL_ES
 //precision mediump float;
 precision highp float;

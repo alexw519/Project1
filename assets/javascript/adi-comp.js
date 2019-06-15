@@ -18,67 +18,134 @@ var database=firebase.database();
 // array to hold the questions
   var index=0;
   var questionArray = [
-    { question: "Your Name"},
-    { question: "Your Crush's Name"},
-    { question: "Where you want to have your date"},
-    { question: "Your favorite type of food"}
-    
+    { question: "Your Name", 
+      parameter: "name"},
+    { question: "Your Crush's Name", 
+      parameter: "crushName"},
+    { question: "Where you want to have your date"
+    , parameter: "location"},
+    { question: "Your favorite type of food"
+    , parameter: "food"},
+    { question: "Age",
+      parameter: "age"}
   ];
 
+  var userResponse = {};
   // click on start to see the first question
-  $("#start").on("click", showQuestion); 
+  $("#start").on("click",function () {
+    console.log("clicked")
+   showQuestion(questionArray, index)}
+   ); 
 
 // showing the questions
-function showQuestion() {
+function showQuestion(arr, i) {
   event.preventDefault();
 // if the question array is smaller than the index
-  if(index < questionArray.length) {
+  if(i < arr.length) {
 // in the display div will be the question shown
-    $("#display").html(questionArray[index].question);
+    $("#display").html(arr[i].question);
 // and a dynamic text area
-    var userAnswer = $("<textarea id='response' class='materialize-textarea'`></textarea>");
+    var userAnswer = $(`<textarea id='useresponse' 
+    name='${arr[i].paramerter}' class='materialize-textarea'></textarea>`);
     // in the div with id response
     $("#response").html(userAnswer);
-// loop to go through all of the quesitons
-    for (var i = 0; i < questionArray.length; i++) {
-      index++
-    
-        
-    }
+
     // when submit is clicked
-        $("#submit").on("click", function() {
-// the date
-        
-        var userInfo = userAnswer.val().trim();
-        index++
-        database.ref().push(userInfo);
-    console.log("nah" + userInfo);
-    
-  })
+  }
+else {
+  displayResults()
+}
+}
+
+$("#submit").on("click", function() {
+  
+  var answer = $('#useresponse').val().trim();
+
+  var param = questionArray[index].parameter;
+
+  userResponse[param] = answer;
+   
+  console.log(userResponse);
+  index++
+  showQuestion(questionArray, index)
+  
+// the value of userAnswer is pushed into firebase as userInfo
+
+// database.ref().push(userInfo);
+
+})
+
+
+
+function displayResults() {
+  //if good match
+  //show restaurants
+
+  //if bad match
+  var match = false
+  if(match){
+    console.log(userResponse);
+    var resultMap = createMap(userResponse.food, userResponse.location);
+    $("#maps").html(resultMap);
+    $("#maps").show();
+  }
+  else{
+    if(userResponse.age < 21){
+      //map with icecream
+      userResponse.food = "ice cream"
+      var resultMap = createMap(userResponse.food, userResponse.location);
+      $("#maps").html(resultMap);
+  
+      $("#maps").show();
+    }
+    else{
+      userResponse.food = "bar"
+      var resultMap = createMap(userResponse.food, userResponse.location);
+      $("#maps").html(resultMap);
+      $("#maps").show();
+    }
 
   }
 
+
+ 
 }
 
-
-
-
+// hide the submit button
 $("#submit").hide();
-
-
+$("#maps").hide();
+// until start button is clicked
 $("#start").click(function(){
   $("#start").hide();
   $("#submit").show();
 })
 
 
- 
+function createMap(food, city) {
+  var newMap = `<iframe width='600' height='450' frameborder='0' style='border:0' src='https://www.google.com/maps/embed/v1/search?q="${food}+in+${city}"&key=AIzaSyDNR4NPh6CTtgRWlpI-HSMop8makDVAMDM' allowfullscreen></iframe>`;
 
-  var city = "chicago";
-var faveFood = "tacos";
+  return newMap;
 
-$("#maps").html("<iframe width='600' height='450' frameborder='0' style='border:0' src='https://www.google.com/maps/embed/v1/search?q=" + faveFood + "+in+" + city + "&key=AIzaSyDNR4NPh6CTtgRWlpI-HSMop8makDVAMDM' allowfullscreen></iframe>");
+} 
 
+  // var city = "chicago";
+// var faveFood = "tacos";
+
+
+
+
+
+// function iceCreamSuggest()
+// {
+//     var localURL = "http://ip-api.com/json/";
+//     $.ajax({
+//         url: localURL,
+//         method: "GET"
+//     }).then(function(response)
+//     {
+//         callMap("ice cream", response.city);
+//     })
+// }
 
 
 // // Background
