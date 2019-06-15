@@ -146,6 +146,13 @@ function placeMap() {
 $("#googleMap").html("<iframe width='450' height='350' margin: '0 auto' frameborder='0' style='border:0' src='https://www.google.com/maps/embed/v1/search?q=" + faveFood + "+in+" + dateCity + "&key=AIzaSyDNR4NPh6CTtgRWlpI-HSMop8makDVAMDM' allowfullscreen></iframe>");
 }
 
+
+function zomatoApi(){
+    $("#zomato").html("<iframe src='https://www.zomato.com/widgets/res_search_widget.php?city_id=292&theme=red&widgetType=custom&sort=popularity' style='position:relative;width:100%;height:100%;' border='0' frameborder='0'></iframe>");
+}
+
+
+
 // DAVIS TO CONFIGURE THIS
 //Suggests a ice cream parlor based off of current location using Google Maps
 function iceCreamSuggest()
@@ -174,5 +181,6 @@ function barSuggest()
 function callMap()
 {
     var {dateCity, faveFood} = userResponse;
-    $("#googleMap").html("<iframe width='600' height='450' frameborder='0' style='border:0' src='https://www.google.com/maps/embed/v1/search?q=" + faveFood + "+in+" + dateCity + "&key=AIzaSyDNR4NPh6CTtgRWlpI-HSMop8makDVAMDM&zoom=' allowfullscreen></iframe>");
+    $("#googleMap").html("<iframe width='600' height='450' frameborder='0' style='border:0' src='https://www.google.com/maps/embed/v1/search?q=" + faveFood + "+in+" + dateCity + "&key=AIzaSyDNR4NPh6CTtgRWlpI-HSMop8makDVAMDM&zoom=12' allowfullscreen></iframe>");
+    zomatoApi();
 }
