@@ -1,9 +1,6 @@
 var percentage = "";
 var spacing = '\xa0\xa0';
-
-
 var userResponse = {};
-
 var prompt = [
     {
         message: "Enter Your Age",
@@ -32,7 +29,10 @@ var prompt = [
     }
 
 ]
-
+var resetBtn = $('<input type="button" value="Not the one? Try again!"/>');
+resetBtn.addClass('waves-effect').addClass('waves-light').addClass('btn').addClass('lighten-2').addClass('hoverable');
+var resultsBtn = $('<input type="button" value="I\'ll risk it"/>');
+resultsBtn.addClass('waves-effect').addClass('waves-light').addClass('btn').addClass('lighten-2').addClass('hoverable').attr("float","left");
 var i =0;
 
 
@@ -61,8 +61,14 @@ box.html(displayPrompt(prompt, i))
 
 $(document).on("click", "#next-question",function () {
     console.log(i);
-    
-    if(i <= 3){
+    if($(`#${prompt[i].id}`).val().trim() == ''){
+        $(`#${prompt[i].id}`).addClass("error")
+      
+        // remove the class after the animation completes
+        setTimeout(function() {
+            $(`#${prompt[i].id}`).removeClass("error");
+        }, 300);
+    } else if(i <= 3){
         userResponse[prompt[i].id] = $(`#${prompt[i].id}`).val().trim();
 
         i++;
@@ -91,17 +97,19 @@ function loveCalculator() {
         headers: {"X-RapidAPI-Key": "e6021ca9a5msh5763cf5deefbf36p1059e8jsn2fea555b0671"},
     }).then(function (response) {
         $(".spinner").hide();
+        $(".fallingHearts").hide();
         console.log(response);
         percentage = response.percentage;
         $("#gridParent").show();
         $("#chartTitle").text(userName + "'s & " + crushName +"'s Compatibility Score")
         $("#percentage").text(spacing + percentage + "%")
         percentage = Number(percentage/100).toLocaleString(undefined,{style: 'percent', minimumFractionDigits:0});
-        $(".bar-1").css("width", percentage);
+        $(".bar-1").css("width", percentage).addClass("hoverable");
         output();
         placeMap();
     }).fail(function(xhr) {
         $(".spinner").hide();
+        $(".fallingHearts").hide();
         var errorMessage = xhr.status + ': ' + xhr.statusText
         console.log(errorMessage);
         percentage = Math.floor(Math.random() * 91) + 10;
@@ -110,9 +118,8 @@ function loveCalculator() {
         $("#percentage").text(spacing + percentage + "%")
         percentage = Number(percentage/100).toLocaleString(undefined,{style: 'percent', minimumFractionDigits:0}); 
         console.log(percentage);
-        $(".bar-1").css("width", percentage);  
+        $(".bar-1").css("width", percentage).addClass("hoverable");  
         output();
-        placeMap();
   })
 
  }
@@ -123,25 +130,28 @@ function output() {
     console.log(percentage);
 
     if (percentage < .4 && userAge < 21){
-    $("#chartSubtitle").text("Good things come to those who wait. Why don’t you hit up an ice cream shop nearby?");
+    $("#chartSubtitle").text("Good things come to those who wait. Why not wait at an ice cream shop nearby?");
     iceCreamSuggest();
+    $("#resetBtn").append(resetBtn);
+    $("#resultsBtn").append(resultsBtn)
     } else if (percentage < .4 && userAge >= 21){
-        $("#chartSubtitle").text("Good things come to those who wait. Why not wait drunk at a bar nearby?");
+        $("#chartSubtitle").text("Good things come to those who wait. Why not wait at a bar nearby?");
         barSuggest();
     } 
     else if (.4 <= percentage && percentage <= .7) {
         $("#chartSubtitle").text("Take the next step! How about dinner at one of the restaurants below?")
     } else {
-        $("#chartSubtitle").text("Bring a ring with you to the restaurant! We have a feeling they might be the one")
+        placeMap();
+        $("#chartSubtitle").text("Bring a ring with you to the restaurant! We have a feeling they might be the one :)");
+        $("#resetBtn").append(resetBtn);
     }
 }
 
 function placeMap() {
     var {dateCity, faveFood} = userResponse;
-$("#googleMap").html("<iframe width='450' height='350' margin: '0 auto' frameborder='0' style='border:0' src='https://www.google.com/maps/embed/v1/search?q=" + faveFood + "+in+" + dateCity + "&key=AIzaSyDNR4NPh6CTtgRWlpI-HSMop8makDVAMDM' allowfullscreen></iframe>");
+$("#googleMap").html("<iframe width='450' height='350' frameborder='0' style='border:0' src='https://www.google.com/maps/embed/v1/search?q=" + faveFood + "+in+" + dateCity + "&key=AIzaSyDNR4NPh6CTtgRWlpI-HSMop8makDVAMDM' allowfullscreen></iframe>");
 }
 
-// DAVIS TO CONFIGURE THIS
 //Suggests a ice cream parlor based off of current location using Google Maps
 function iceCreamSuggest()
 {
@@ -154,6 +164,7 @@ function iceCreamSuggest()
         callMap("ice cream", response.city);
     })
 }
+
 function barSuggest()
 {
     var localURL = "http://ip-api.com/json/";
@@ -166,8 +177,24 @@ function barSuggest()
     })
 }
 
-function callMap()
+function callMap(faveFood, dateCity)
 {
-    var {dateCity, faveFood} = userResponse;
-    $("#googleMap").html("<iframe width='600' height='450' frameborder='0' style='border:0' src='https://www.google.com/maps/embed/v1/search?q=" + faveFood + "+in+" + dateCity + "&key=AIzaSyDNR4NPh6CTtgRWlpI-HSMop8makDVAMDM&zoom=' allowfullscreen></iframe>");
+    $("#googleMap").html("<iframe width='450' height='350' frameborder='0' style='border:0' src='https://www.google.com/maps/embed/v1/search?q=" + faveFood + "+in+" + dateCity + "&key=AIzaSyDNR4NPh6CTtgRWlpI-HSMop8makDVAMDM&zoom=15' allowfullscreen></iframe>");
 }
+
+$('#resetBtn').click(function() {
+    location.reload();
+});
+
+$('#resultsBtn').click(function(){
+    event.preventDefault();
+    placeMap();
+    console.log("Button Clicked");
+})
+
+// $(document).on("click", ".optionBtn", function () {
+//     // event.preventDefault() prevents submit button from trying to send a form.
+//     event.preventDefault();
+//     callMap();
+//     console.log("Button Clicked");
+// })
