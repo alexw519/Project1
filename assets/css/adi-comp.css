@@ -5,11 +5,13 @@
     left: 50px;
     top: 250px;
     z-index: 50;
+    font-family: 'Sofia', cursive;
 }
 
 #submit {
     background-color: #fe5652;
     color: #EEEEEE;
+    font-family: 'Sofia', cursive;
 }
 
 
@@ -19,12 +21,14 @@
     color: #EEEEEE;
     margin: 20px;
     left: 0px;
+    top: 200px;
     z-index: 2;
+    font-family: 'Sofia', cursive;
 }
 
 #logo {
     position: absolute;
-    height: 300px;
+    height: 250px;
     width: 300px;
     z-index: 2;
     left: -50px;
@@ -35,12 +39,16 @@
 display: flex;
 align-items: center;
 justify-content: center;
+position: absolute;
+top: 250px;
+left: 400px;
+border-radius: 5px;
 }
 
 body {
     background-color: #F4F4F4;
-    font-family: 'Source Sans Pro', sans-serif;
-    font-size: 18px;
+    font-family: 'Sofia', cursive;
+        font-size: 18px;
     line-height: 30px;
     color: #555555;
     font-weight: 200;  
@@ -91,6 +99,9 @@ body {
     display:none;
 }
 #gridChild {
+    position: absolute;
+    top: 50px;
+    left: 250px;
     margin: 0 auto;
     background-color: #EEEEEE;
     border-left: solid;
@@ -101,6 +112,7 @@ body {
     width: 450px;
     align-items: center;
     display: flex;
+    border-radius: 5px;
 }
 .bar-1 {
     color: white;
@@ -110,29 +122,44 @@ body {
     border-radius: 5px;
 }
 #chartTitle {
-    top: -30px;
+    position: absolute;
+    top: 0px;
+    left: 300px;
     text-align: center;
     font-size: 22px;
     color: #fe5652;
     margin-bottom: 15px;
+    font-family: 'Sofia', cursive;
 }
 #chartSubtitle {
+    position: absolute;
+    top: 200px;
+    left: 200px;
     margin: 0 auto;
     text-align: center;
     margin-top: 15px;
     font-size: 16px;
+    font-family: 'Sofia', cursive;
 }
 
-#exampleSlider {
-    min-width: 300px;
-    min-height: 300px;
-    position: relative;
-    left: 250px;
-    top: 50px;
+#slideshow { 
+    margin: 50px auto; 
+    position: absolute; 
+    padding: 10px; 
+    height: 100px;
 }
 
-img {
+img{
+    position: absolute;
+    max-height: 400px;
+    width: 600px;
     border-radius: 5px;
-    max-width: 500px;
-    max-height: 500px;
+    left: 500px;
+    bottom: -100px;
+}
+
+p {
+    position: relative;
+    font-family: 'Sofia', cursive;
+    top: 400px;
 }

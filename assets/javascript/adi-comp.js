@@ -30,12 +30,12 @@ function showQuestion(arr, i) {
 // if the question array is smaller than the index
   // if(i < arr.length) {
 // in the display div will be the question shown
-    $("#display").html(arr[i].question);
+    $("#question").html(arr[i].question);
 // and a dynamic text area
     var userAnswer = $(`<textarea id='useresponse' 
     name='${arr[i].paramerter}' class='materialize-textarea'></textarea>`);
     // in the div with id response
-    $("#response").html(userAnswer);
+    $("#answer").html(userAnswer);
 
     // when submit is clicked
   // }
@@ -72,22 +72,20 @@ var {age} = userResponse;
     console.log(percentage);
     if (percentage < .4 && age < 21){
     $("#chartSubtitle").text("Good things come to those who wait. Why not wait at an ice cream shop nearby?");
-    // iceCreamSuggest();
-    // $("#resetBtn").append(resetBtn);
-    // $("#resultsButton").append(resultsBtn)
+    $("#question").hide();
+    $("#answer").hide();
     } else if (percentage < .4 && age >= 21){
         $("#chartSubtitle").text("Good things come to those who wait. Why not wait at a bar nearby?");
-        // barSuggest();
-        // $("#resetBtn").append(resetBtn);
-        // $("#resultsButton").append(resultsBtn)
+        $("#question").hide();
+    $("#answer").hide();
     } else if (.4 <= percentage && percentage <= .7) {
         $("#chartSubtitle").text("Take the next step! How about dinner at one of the restaurants below?");
-        // placeMap();
-        // $("#resetBtn").append(resetBtn);
+        $("#question").hide();
+    $("#answer").hide();
     } else {
-        // placeMap();
         $("#chartSubtitle").text("Bring a ring with you to the restaurant! We have a feeling they might be the one :)");
-        // $("#resetBtn").append(resetBtn);
+  $("#question").hide();
+  $("#answer").hide();
     }
 }
 
@@ -143,22 +141,27 @@ function loveCalculator() {
   //show restaurants
 
   //if bad match
-  // var match = false
+  // show ice cream if age<21
+  // show bar if age=>21
   if(match > 50){
     $("#response").hide();
     $("#display").hide();
     $("#submit").hide();
+    $("#description").hide();
     console.log(userResponse);
     var resultMap = createMap(userResponse.food, userResponse.location);
     $("#map").html(resultMap);
     $("#map").show();
     $("#resetBtn").show();
+    
   }
   else{
     if(userResponse.age < 21){
       $("#response").hide();
       $("#display").hide();
       $("#submit").hide();
+      $("#description").hide();
+
       //map with icecream
       userResponse.food = "ice cream"
       var resultMap = createMap(userResponse.food, userResponse.location);
@@ -171,6 +174,8 @@ function loveCalculator() {
       $("#response").hide();
       $("#display").hide();
       $("#submit").hide();
+      $("#description").hide();
+
       var resultMap = createMap(userResponse.food, userResponse.location);
       $("#map").html(resultMap);
       $("#map").show();
@@ -190,7 +195,7 @@ $("#map").hide();
 // until start button is clicked
 $("#start").click(function(){
   $("#start").hide();
-  $("#exampleSlider").hide();
+  $("#slideshow").hide();
   $("#submit").show();
 })
 
@@ -206,33 +211,16 @@ function createMap(food, city) {
 
 } 
 
-$(function () {
+$("#slideshow > div:gt(0)").hide();
 
-  /* SET PARAMETERS */
-  var change_img_time     = 5000; 
-  var transition_speed    = 100;
-
-  var simple_slideshow    = $("#exampleSlider"),
-      listItems           = simple_slideshow.children('li'),
-      listLen             = listItems.length,
-      i                   = 0,
-
-      changeList = function () {
-
-          listItems.eq(i).fadeOut(transition_speed, function () {
-              i += 1;
-              if (i === listLen) {
-                  i = 0;
-              }
-              listItems.eq(i).fadeIn(transition_speed);
-          });
-
-      };
-
-  listItems.not(':first').hide();
-  setInterval(changeList, change_img_time);
-
-});
+setInterval(function() { 
+  $('#slideshow > div:first')
+    .fadeOut(1000)
+    .next()
+    .fadeIn(1000)
+    .end()
+    .appendTo('#slideshow');
+},  3000);
 
 
 });
