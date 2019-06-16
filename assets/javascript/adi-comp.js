@@ -19,7 +19,8 @@ $(document).ready(function() {
   // click on start to see the first question
   $("#start").on("click",function () {
     console.log("clicked")
-   showQuestion(questionArray, index)}
+   showQuestion(questionArray, index)
+  }
    ); 
 
 // showing the questions
@@ -189,6 +190,7 @@ $("#map").hide();
 // until start button is clicked
 $("#start").click(function(){
   $("#start").hide();
+  $("#exampleSlider").hide();
   $("#submit").show();
 })
 
@@ -204,6 +206,33 @@ function createMap(food, city) {
 
 } 
 
+$(function () {
+
+  /* SET PARAMETERS */
+  var change_img_time     = 5000; 
+  var transition_speed    = 100;
+
+  var simple_slideshow    = $("#exampleSlider"),
+      listItems           = simple_slideshow.children('li'),
+      listLen             = listItems.length,
+      i                   = 0,
+
+      changeList = function () {
+
+          listItems.eq(i).fadeOut(transition_speed, function () {
+              i += 1;
+              if (i === listLen) {
+                  i = 0;
+              }
+              listItems.eq(i).fadeIn(transition_speed);
+          });
+
+      };
+
+  listItems.not(':first').hide();
+  setInterval(changeList, change_img_time);
+
+});
 
 
 });

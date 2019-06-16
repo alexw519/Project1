@@ -1,93 +1,10 @@
-.fallingHearts {
-    text-align: center;
-    z-index: -1;
-}
-.fallingHearts span {
-    display: inline-block;
-    width: 48px;
-    height: 48px;
-	margin: -280px 40px 54px  -34px;
-    background:url("../images/iconfinder_jee-68_2180672\ \(1\).png");
-    
-    -webkit-animation: fallingHearts 10s infinite  linear;
-    -moz-animation: fallingHearts 10s infinite  linear;
-    z-index: -2;
-}
-.fallingHearts span:nth-child(5n+5) {
-
-    -webkit-animation-delay: 1.3s;
-    -moz-animation-delay: 1.3s;
-}
-.fallingHearts span:nth-child(3n+2) {
-
-    -webkit-animation-delay: 1.5s;
-    -moz-animation-delay: 1.5s;
-}
-.fallingHearts span:nth-child(2n+5) {
-
-    -webkit-animation-delay: 1.7s;
-    -moz-animation-delay: 1.7s;
-}
-
-.fallingHearts span:nth-child(3n+10) {
-
-    -webkit-animation-delay: 2.7s;
-    -moz-animation-delay: 2.7s;
-}
-.fallingHearts span:nth-child(7n+2) {
-
-    -webkit-animation-delay: 3.5s;
-    -moz-animation-delay: 3.5s;
-}
-.fallingHearts span:nth-child(4n+5) {
-
-    -webkit-animation-delay: 5.5s;
-    -moz-animation-delay: 5.5s;
-}
-.fallingHearts span:nth-child(3n+7) {
-
-    -webkit-animation-delay: 8s;
-    -moz-animation-delay: 8s;
-}
-@-webkit-keyframes fallingHearts {
-  0% {
-    opacity: 1;
-
-	-webkit-transform: translate(0, 0px) rotateZ(0deg);
-  }
-  75% {
-    opacity: 1;
-
-	-webkit-transform: translate(100px, 600px) rotateZ(270deg); 
-  }
-  100% {
-    opacity: 0;
-
-	-webkit-transform: translate(150px, 800px) rotateZ(360deg);
-  }
-}
-@-moz-keyframes fallingHearts {
-  0% {
-    opacity: 1;
-    
-	-webkit-transform: translate(0, 0px) rotateZ(0deg);
-  }
-  75% {
-    opacity: 1;
-   
-	-webkit-transform: translate(100px, 600px) rotateZ(270deg); 
-  }
-  100% {
-    opacity: 0;
-    
-	-webkit-transform: translate(150px, 800px) rotateZ(360deg);
-  }
-}
-
 #start {
+    position: absolute;
     background-color: #fe5652;
     color: #EEEEEE;
-    left: 380px;
+    left: 50px;
+    top: 250px;
+    z-index: 50;
 }
 
 #submit {
@@ -95,22 +12,23 @@
     color: #EEEEEE;
 }
 
-#resultsBtn {
-    background-color: #fe5652;
-    color: #EEEEEE;
-}
 
 #resetBtn {
+    position: absolute;
     background-color: #fe5652;
     color: #EEEEEE;
+    margin: 20px;
+    left: 0px;
+    z-index: 2;
 }
 
-img {
+#logo {
     position: absolute;
-    height: 200px;
-    width: 200px;
+    height: 300px;
+    width: 300px;
     z-index: 2;
-    left: 0%;
+    left: -50px;
+    top: 0px;
 }
 
 #map {
@@ -205,6 +123,16 @@ body {
     font-size: 16px;
 }
 
+#exampleSlider {
+    min-width: 300px;
+    min-height: 300px;
+    position: relative;
+    left: 250px;
+    top: 50px;
+}
 
-
-
+img {
+    border-radius: 5px;
+    max-width: 500px;
+    max-height: 500px;
+}
