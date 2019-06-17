@@ -111,7 +111,7 @@ function loveCalculator() {
         //If The Call Fails, Generates A Random Number And Displays The Results
         $(".spinner").hide();
         $(".fallingHearts").hide();
-        var errorMessage = xhr.status + ': ' + xhr.statusText
+        var errorMessage = xhr.status + ': ' + xhr.statusText;
         console.log(errorMessage);
         percentage = Math.floor(Math.random() * 91) + 10;
         $("#gridParent").show();
@@ -134,13 +134,17 @@ function output() {
     $("#chartSubtitle").text("Good things come to those who wait. Why not wait at an ice cream shop nearby?");
     iceCreamSuggest();
     $("#resetBtn").append(resetBtn);
-    $("#resultsBtn").append(resultsBtn)
-    } else if (percentage < .4 && userAge >= 21){
+    $("#resultsBtn").append(resultsBtn);
+    } 
+    else if (percentage < .4 && userAge >= 21){
         $("#chartSubtitle").text("Good things come to those who wait. Why not wait at a bar nearby?");
         barSuggest();
+        $("resetBtn").append(resetBtn);
+        $("resultsBtn").append(resultsBtn);
     } 
     else if (.4 <= percentage && percentage <= .7) {
         $("#chartSubtitle").text("Take the next step! How about dinner at one of the restaurants below?")
+        $("resetBtn").append(resetBtn);
     } else {
         placeMap();
         $("#chartSubtitle").text("Bring a ring with you to the restaurant! We have a feeling they might be the one :)");
@@ -183,7 +187,7 @@ function barSuggest()
 //Function To Put A Map On The Screen Based Upon Results
 function callMap(faveFood, dateCity)
 {
-    $("#googleMap").html("<iframe width='450' height='350' frameborder='0' style='border:0' src='https://www.google.com/maps/embed/v1/search?q=" + faveFood + "+in+" + dateCity + "&key=AIzaSyDNR4NPh6CTtgRWlpI-HSMop8makDVAMDM&zoom=15' allowfullscreen></iframe>");
+    $("#googleMap").html("<iframe width='450' height='350' frameborder='0' style='border:0' src='https://www.google.com/maps/embed/v1/search?q=" + faveFood + "+in+" + dateCity + "&key=AIzaSyDNR4NPh6CTtgRWlpI-HSMop8makDVAMDM&zoom=12' allowfullscreen></iframe>");
 }
 
 $('#resetBtn').click(function() {
@@ -201,3 +205,19 @@ $('#resultsBtn').click(function(){
 //     callMap();
 //     console.log("Button Clicked");
 // })
+
+function callButton() {
+    var btn = $("<button>");
+    btn.addClass("optionBtn");
+    //add styling to it and space it out
+    btn.text("Get ma results anyways");
+    $("#addButton").append(btn);
+
+}
+
+$(document).on("click", ".optionBtn", function () {
+    // event.preventDefault() prevents submit button from trying to send a form.
+    event.preventDefault();
+    callMap(userResponse.faveFood, userResponse.dateCity);
+    console.log("Button Clicked");
+})
