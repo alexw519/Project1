@@ -48,7 +48,6 @@ body {
 	}
 }
 .page-footer{
-    /* display: none; */
     position:fixed;
     bottom:0;
     margin-top: 50px;
@@ -62,11 +61,8 @@ body {
     height: 50px;
 }
 .myContainer{
-    /* background-color: yellow; */
     display: flex;
     flex-direction: column;
-    /* height: 8px; */
-    /* margin-bottom: 25px; */
 }
 
 .centered {

@@ -16,19 +16,17 @@ $(document).ready(function() {
   ];
 
   var userResponse = {};
+  var userLocation;
   // click on start to see the first question
   $("#start").on("click",function () {
-    console.log("clicked")
-   showQuestion(questionArray, index)
+   showQuestion(questionArray, index);
   }
    ); 
 
 // showing the questions
 function showQuestion(arr, i) {
-  console.log(i);
   event.preventDefault();
-// if the question array is smaller than the index
-  // if(i < arr.length) {
+  
 // in the display div will be the question shown
     $("#display").html(arr[i].question);
 // and a dynamic text area
@@ -36,32 +34,31 @@ function showQuestion(arr, i) {
     name='${arr[i].paramerter}' class='materialize-textarea'></textarea>`);
     // in the div with id response
     $("#response").html(userAnswer);
-
-    // when submit is clicked
-  // }
 }
 
 $("#submit").on("click", function() {
-  // if(index <= questionArray.length){
     var answer = $('#useresponse').val().trim();
 
-    var param = questionArray[index].parameter;
-  
-    userResponse[param] = answer;
-     
-    console.log(userResponse);
-    index++
-
-    if (index < questionArray.length ) {
-      showQuestion(questionArray, index)
+    if (answer === "")
+    {
+      event.preventDefault();
     }
+    else
+    {
+      var param = questionArray[index].parameter;
+  
+      userResponse[param] = answer;
+     
+      index++
 
-  // }
-  else {
-    loveCalculator();
-    // displayResults();
-  }
+      if (index < questionArray.length ) {
+        showQuestion(questionArray, index)
+      }
 
+      else {
+        loveCalculator();
+      }
+    }
 })
 
 
@@ -72,22 +69,16 @@ var {age} = userResponse;
     console.log(percentage);
     if (percentage < .4 && age < 21){
     $("#chartSubtitle").text("Good things come to those who wait. Why not wait at an ice cream shop nearby?");
-    // iceCreamSuggest();
-    // $("#resetBtn").append(resetBtn);
-    // $("#resultsButton").append(resultsBtn)
+
     } else if (percentage < .4 && age >= 21){
         $("#chartSubtitle").text("Good things come to those who wait. Why not wait at a bar nearby?");
-        // barSuggest();
-        // $("#resetBtn").append(resetBtn);
-        // $("#resultsButton").append(resultsBtn)
+
     } else if (.4 <= percentage && percentage <= .7) {
         $("#chartSubtitle").text("Take the next step! How about dinner at one of the restaurants below?");
-        // placeMap();
-        // $("#resetBtn").append(resetBtn);
+
     } else {
-        // placeMap();
         $("#chartSubtitle").text("Bring a ring with you to the restaurant! We have a feeling they might be the one :)");
-        // $("#resetBtn").append(resetBtn);
+
     }
 }
 
@@ -114,37 +105,30 @@ function loveCalculator() {
       $(".bar-1").css("width", percentage).addClass("hoverable");
       output();
       displayResults(response.percentage)
-      // placeMap();
+
+      
   }).fail(function(xhr) {
       $(".spinner").hide();
       var errorMessage = xhr.status + ': ' + xhr.statusText
-      console.log(errorMessage);
-      _percentage = Math.floor(Math.random() * 91) + 10;
+
+      percentage = Math.floor(Math.random() * 91) + 10;
       $("#gridParent").show();
       $("#chartTitle").text(name + "'s & " + crushName +"'s Compatibility Score")
       $("#percentage").text("  " + percentage + "%")
-      percentage = Number(_percentage/100).toLocaleString(undefined,{style: 'percent', minimumFractionDigits:0}); 
-      console.log(_percentage);
+      percentage = Number(percentage/100).toLocaleString(undefined,{style: 'percent', minimumFractionDigits:0}); 
+
       $(".bar-1").css("width", percentage).addClass("hoverable");  
       output();
-      displayResults(_percentage);
+      displayResults(percentage);
 })
 
 }
 
 
  function displayResults(match) {
-
-  console.log('match', +match);
-  console.log('match tyoe', typeof(+match));
-
-  
+ 
   //if good match
-  //show restaurants
-
-  //if bad match
-  // var match = false
-  if(match > 50){
+  if(match >= 40){
     $("#response").hide();
     $("#display").hide();
     $("#submit").hide();
@@ -155,19 +139,32 @@ function loveCalculator() {
     $("#resetBtn").show();
   }
   else{
+
+    // Gets Their Location To Suggest Nearby Places
+    // var localURL = "http://ip-api.com/json/";
+    // $.ajax({
+    //     url: localURL,
+    //     method: "GET"
+    // }).then(function(response)
+    // {
+    //   userResponse.location = response.city;
+    // })
+
+
     if(userResponse.age < 21){
       $("#response").hide();
       $("#display").hide();
       $("#submit").hide();
       //map with icecream
-      userResponse.food = "ice cream"
+      
+      userResponse.food = "ice cream";
       var resultMap = createMap(userResponse.food, userResponse.location);
       $("#map").html(resultMap);
       $("#map").show();
       $("#resetBtn").show();
     }
     else{
-      userResponse.food = "bar"
+      userResponse.food = "bar";
       $("#response").hide();
       $("#display").hide();
       $("#submit").hide();

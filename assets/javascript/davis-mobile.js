@@ -1,6 +1,8 @@
 var percentage = "";
 var spacing = '\xa0\xa0';
 var userResponse = {};
+
+//Array Of The Different Questions
 var prompt = [
     {
         message: "Enter Your Age",
@@ -29,6 +31,7 @@ var prompt = [
     }
 
 ]
+
 var resetBtn = $('<input type="button" value="Not the one? Try again!"/>');
 resetBtn.addClass('waves-effect').addClass('waves-light').addClass('btn').addClass('lighten-2').addClass('hoverable');
 var resultsBtn = $('<input type="button" value="I\'ll risk it"/>');
@@ -37,9 +40,6 @@ var i =0;
 
 
 function displayPrompt(arr, i) {
-    console.log('display promt working');
-
-        // console.log('arr', arr)
     var promptBox = 
         `<div id="ageObject" class="slideLeft">
     ${arr[i].message}
@@ -51,21 +51,13 @@ function displayPrompt(arr, i) {
     return promptBox
 }
 
-
-
-
 var next = true;
-
 var box = $('<div>')
-
-
-
 $(".myContainer").append(box);
-
 box.html(displayPrompt(prompt, i)) 
 
+//Goes To The Next Question When Clicked
 $(document).on("click", "#next-question",function () {
-    console.log(i);
     if($(`#${prompt[i].id}`).val().trim() == ''){
         $(`#${prompt[i].id}`).addClass("error")
       
@@ -79,19 +71,19 @@ $(document).on("click", "#next-question",function () {
         i++;
         var res = displayPrompt(prompt, i);
         box.html(res)
-        console.log(userResponse)
     } else if (i=4){
         userResponse[prompt[i].id] = $(`#${prompt[i].id}`).val().trim();
         box.hide();
         loveCalculator();
     }
- 
 });
 
- function loveCalculator() {
+//Function To Call The Love Calculator API
+function loveCalculator() {
 
     var {userName, crushName} = userResponse;
 
+    //Shows The Loading Screen
     $(".spinner").show();
     var proxy = "https://cors-anywhere.herokuapp.com/";
     var queryURL = "https://love-calculator.p.rapidapi.com/getPercentage?fname=" + userName + "&sname=" + crushName;
@@ -101,6 +93,8 @@ $(document).on("click", "#next-question",function () {
         headers: {"X-RapidAPI-Host": "love-calculator.p.rapidapi.com"},
         headers: {"X-RapidAPI-Key": "e6021ca9a5msh5763cf5deefbf36p1059e8jsn2fea555b0671"},
     }).then(function (response) {
+
+        //Displays The Percentage On A Graph And Calls The Map Function
         $(".spinner").hide();
         $(".fallingHearts").hide();
         console.log(response);
@@ -113,9 +107,11 @@ $(document).on("click", "#next-question",function () {
         output();
         placeMap();
     }).fail(function(xhr) {
+
+        //If The Call Fails, Generates A Random Number And Displays The Results
         $(".spinner").hide();
         $(".fallingHearts").hide();
-        var errorMessage = xhr.status + ': ' + xhr.statusText
+        var errorMessage = xhr.status + ': ' + xhr.statusText;
         console.log(errorMessage);
         percentage = Math.floor(Math.random() * 91) + 10;
         $("#gridParent").show();
@@ -133,20 +129,22 @@ function output() {
     var {userAge} = userResponse;
     percentage = parseFloat(percentage) / 100.0;
     console.log(percentage);
+
     if (percentage < .4 && userAge < 21){
     $("#chartSubtitle").text("Good things come to those who wait. Why not wait at an ice cream shop nearby?");
     iceCreamSuggest();
     $("#resetBtn").append(resetBtn);
-    $("#resultsBtn").append(resultsBtn)
-    } else if (percentage < .4 && userAge >= 21){
+    $("#resultsBtn").append(resultsBtn);
+    } 
+    else if (percentage < .4 && userAge >= 21){
         $("#chartSubtitle").text("Good things come to those who wait. Why not wait at a bar nearby?");
         barSuggest();
-        $("#resetBtn").append(resetBtn);
-        $("#resultsBtn").append(resultsBtn)
-    } else if (.4 <= percentage && percentage <= .7) {
-        $("#chartSubtitle").text("Take the next step! How about dinner at one of the restaurants below?");
-        placeMap();
-        $("#resetBtn").append(resetBtn);
+        $("resetBtn").append(resetBtn);
+        $("resultsBtn").append(resultsBtn);
+    } 
+    else if (.4 <= percentage && percentage <= .7) {
+        $("#chartSubtitle").text("Take the next step! How about dinner at one of the restaurants below?")
+        $("resetBtn").append(resetBtn);
     } else {
         placeMap();
         $("#chartSubtitle").text("Bring a ring with you to the restaurant! We have a feeling they might be the one :)");
@@ -172,6 +170,8 @@ function iceCreamSuggest()
     })
 }
 
+
+//Suggests A Nearby Bar
 function barSuggest()
 {
     var localURL = "http://ip-api.com/json/";
@@ -184,9 +184,10 @@ function barSuggest()
     })
 }
 
+//Function To Put A Map On The Screen Based Upon Results
 function callMap(faveFood, dateCity)
 {
-    $("#googleMap").html("<iframe width='450' height='350' frameborder='0' style='border:0' src='https://www.google.com/maps/embed/v1/search?q=" + faveFood + "+in+" + dateCity + "&key=AIzaSyDNR4NPh6CTtgRWlpI-HSMop8makDVAMDM&zoom=15' allowfullscreen></iframe>");
+    $("#googleMap").html("<iframe width='450' height='350' frameborder='0' style='border:0' src='https://www.google.com/maps/embed/v1/search?q=" + faveFood + "+in+" + dateCity + "&key=AIzaSyDNR4NPh6CTtgRWlpI-HSMop8makDVAMDM&zoom=12' allowfullscreen></iframe>");
 }
 
 $('#resetBtn').click(function() {
@@ -196,7 +197,6 @@ $('#resetBtn').click(function() {
 $('#resultsBtn').click(function(){
     event.preventDefault();
     placeMap();
-    console.log("Button Clicked");
 })
 
 // $(document).on("click", ".optionBtn", function () {
@@ -205,3 +205,19 @@ $('#resultsBtn').click(function(){
 //     callMap();
 //     console.log("Button Clicked");
 // })
+
+function callButton() {
+    var btn = $("<button>");
+    btn.addClass("optionBtn");
+    //add styling to it and space it out
+    btn.text("Get ma results anyways");
+    $("#addButton").append(btn);
+
+}
+
+$(document).on("click", ".optionBtn", function () {
+    // event.preventDefault() prevents submit button from trying to send a form.
+    event.preventDefault();
+    callMap(userResponse.faveFood, userResponse.dateCity);
+    console.log("Button Clicked");
+})
