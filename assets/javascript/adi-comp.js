@@ -43,6 +43,8 @@ function showQuestion(arr, i) {
 
 $("#submit").on("click", function() {
   // if(index <= questionArray.length){
+    event.preventDefault();
+
     var answer = $('#useresponse').val().trim();
 
     var param = questionArray[index].parameter;

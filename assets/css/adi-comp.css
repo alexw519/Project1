@@ -8,6 +8,10 @@
     font-family: 'Sofia', cursive;
 }
 
+.waves-effect.waves-light {
+    background-color: rgba(220, 20, 60, 0.9)
+}
+
 #submit {
     background-color: #fe5652;
     color: #EEEEEE;
