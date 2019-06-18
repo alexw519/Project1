@@ -50,7 +50,7 @@ body {
     font-family: 'Sofia', cursive;
         font-size: 18px;
     line-height: 30px;
-    color: #555555;
+    color: #383838;
     font-weight: 200;  
 	background: linear-gradient(-45deg, #f39593, #F4F4F4, #f9a8a8, white);
 	background-size: 1400% 1400%;
@@ -161,5 +161,6 @@ img{
 p {
     position: relative;
     font-family: 'Sofia', cursive;
-    top: 400px;
+    top: 350px;
+    color: #383838;
 }
