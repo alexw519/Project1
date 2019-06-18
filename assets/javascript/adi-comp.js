@@ -15,6 +15,7 @@ $(document).ready(function() {
       parameter: "age"}
   ];
 
+  var userLocation;
   var userResponse = {};
   // click on start to see the first question
   $("#start").on("click",function () {
@@ -44,7 +45,10 @@ function showQuestion(arr, i) {
 $("#submit").on("click", function() {
   // if(index <= questionArray.length){
     var answer = $('#useresponse').val().trim();
-
+if (answer === "")
+  event.preventDefault();
+else
+{  
     var param = questionArray[index].parameter;
   
     userResponse[param] = answer;
@@ -61,7 +65,7 @@ $("#submit").on("click", function() {
     loveCalculator();
     // displayResults();
   }
-
+}
 })
 
 
@@ -143,7 +147,7 @@ function output(){
     //if bad match
     // show ice cream if age<21
     // show bar if age=>21
-    if(match > 50){
+    if(match > 40){
       $("#response").hide();
       $("#display").hide();
       $("#submit").hide();
@@ -162,21 +166,46 @@ function output(){
         $("#submit").hide();
         $("#description").hide();
   
+        //New Code//////////////////////////////////////////////////
+        var localURL = "http://ip-api.com/json/";
+        $.ajax({
+            url: localURL,
+            method: "GET"
+        }).then(function(response)
+        {
+          userLocation = response.city;
+        })
+
+        /////////////////////////////////////////////////////////////
         //map with icecream
+        // userResponse.location = 
+        // console.log(userResponse.location);
+        console.log(userLocation);
         userResponse.food = "ice cream"
-        var resultMap = createMap(userResponse.food, userResponse.location);
+        var resultMap = createMap(userResponse.food, userLocation);
         $("#map").html(resultMap);
         $("#map").show();
         $("#resetBtn").show();
       }
       else{
+        //New Code//////////////////////////////////////////////////
+        var localURL = "http://ip-api.com/json/";
+        $.ajax({
+            url: localURL,
+            method: "GET"
+        }).then(function(response)
+        {
+          userLocation = response.city;
+        })
+
+        /////////////////////////////////////////////////////////////
         userResponse.food = "bar"
         $("#response").hide();
         $("#display").hide();
         $("#submit").hide();
         $("#description").hide();
   
-        var resultMap = createMap(userResponse.food, userResponse.location);
+        var resultMap = createMap(userResponse.food, userLocation);
         $("#map").html(resultMap);
         $("#map").show();
         $("#resetBtn").show();
