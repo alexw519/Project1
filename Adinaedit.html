@@ -5,26 +5,43 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Mobile Layout</title>
+    <title>Next Step Mobile</title>
     <link rel="stylesheet" href="./assets/css/reset.css">
     <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel="stylesheet" href="./assets/css/davis-mobile.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="shortcut icon" href="./assets/images/favicon2.ico">
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    
 </head>
 
 <body>
+    <div class="fallingHearts">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
     <div class="myContainer">
-        <!-- heart logo -->
+
+        <!-- Heart Logo -->
         <div id="header">
             <img src="https://files.slack.com/files-pri/TH6SQL9BJ-FK98EAZFT/logowords__2_.png" alt="Next Step"
                 id="logo">
         </div>
 
-        <!-- loading -->
-
+        <!-- Loading Screen -->
         <div class="spinner centered">
             <div class="heart heart1"></div>
             <div class="heart heart2"></div>
@@ -32,52 +49,34 @@
             <p id="waitMessage">Love is worth the wait...</p>
         </div>
 
-
-        <!-- results -->
+        <!-- Results -->
         <div class="row centered">
             <div class="col s12">
-                <div id="gridParent" class="centered">
+                <div id="gridParent" class="centered" >
                     <p id="chartTitle"></p>
                     <div id="gridChild">
                         <div class="graph-bar bar-1 stretchRight"><span id="percentage"></span></div>
                     </div>
                     <p id="chartSubtitle"></p>
                     <br>
-                    <div id="googleMap">
-                    </div>
-                    <div id = "addButton"></div>
-                    <br>
-                    <div id="zomato">
-                        <!-- <div class="widget_wrap" style="width:400px;height:500px;display:inline-block"></div> -->
-                        <div class="widget_wrap">
-                            <style>
-                                widget_wrap {
-                                    width: 400px;
-                                    height: 500px;
-                                    display: inline-block
-                                }
-                            </style>
-                        </div>
-                    </div>
+                    <div id="googleMap"></div>
+                    <input type="button" value="I'll risk it" id ="resultsBtn" class = "waves-effect waves-light btn lighten-2 hoverable"/>
+                    <input type="button" value="Not the one? Try again!" id="resetBtn" class = "waves-effect waves-light btn lighten-2 hoverable"/>
                 </div>
             </div>
-
         </div>
-        <div id="spacing"></div>
-        <footer class="page-footer footer-copyright">
+    </div>
+    <div id="spacing"></div>
+   
+    <footer class="page-footer footer-copyright">
+        <div class="container">
+            © 2019 Next Step
+            <a class="grey-text text-lighten-4 right" href="./index.html">Switch to Web</a>
+        </div> 
+    </footer>
 
-            <div class="container">
-                © 2019 Next Step
-                <!-- <a class="grey-text text-lighten-4 right" href="#!">More Links</a> -->
-            </div>
-
-        </footer>
-
-
-
-        <script src="https://code.jquery.com/jquery-3.4.1.js"
-            integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
-        <script src="Adinaedit.js"> </script>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"
+        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+    <script src="Adinaedit.js"> </script>
 </body>
-
 </html>
