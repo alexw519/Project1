@@ -1,4 +1,3 @@
-![alt text](LogoWords2.png)
 # NextStep
 
 This project is designed to provide personalized date suggestions to take a relationship to the "next step".
@@ -26,3 +25,5 @@ https://codepen.io/nourabusoud/pen/Afehr
 https://premiumcoding.com/css3-tricks-falling-leaves-css/
 
 ## Deploy this application at https://alexw519.github.io/Project1/
+
+![Logo](LogoWords.png)
