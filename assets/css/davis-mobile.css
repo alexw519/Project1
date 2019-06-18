@@ -11,7 +11,7 @@ body {
 	-moz-animation: Gradient 15s ease infinite;
 	animation: Gradient 15s ease infinite;
 }
-
+/* Gradient background copied from this site: https://codepen.io/P1N2O/pen/pyBNzX */
 @-webkit-keyframes Gradient {
 	0% {
 		background-position: 0% 50%
@@ -73,14 +73,12 @@ body {
     color: #fe5652;
     text-align: center;
 }
-#resetBtn {
-    /* display:inline-block; */
+#mapBtn {
     color:white;
     display: none;
 }
 
-#resultsBtn {
-    /* display:inline-block; */
+#resetBtn {
     color:white;
     display: none;
 }
@@ -126,7 +124,7 @@ body {
 .waves-effect {
     position: relative;
     cursor: pointer;
-    display: inline-block;
+    /* display: inline-block; */
     overflow: hidden;
     -webkit-user-select: none;
     -moz-user-select: none;
@@ -138,6 +136,7 @@ body {
     transition: .3s ease-out;
 }
 
+/* This is the user validation to make sure that text is entered */
 .error {
     position: relative;
     animation: shake .1s linear;
