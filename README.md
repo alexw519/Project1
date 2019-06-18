@@ -1,3 +1,4 @@
+![alt text](LogoWords2.png)
 # NextStep
 
 This project is designed to provide personalized date suggestions to take a relationship to the "next step".
