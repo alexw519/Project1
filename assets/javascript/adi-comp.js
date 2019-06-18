@@ -16,6 +16,7 @@ $(document).ready(function() {
   ];
 
   var userLocation;
+  var tempFood;
   var userResponse = {};
   // click on start to see the first question
   $("#start").on("click",function () {
@@ -181,11 +182,13 @@ function output(){
         // userResponse.location = 
         // console.log(userResponse.location);
         console.log(userLocation);
+        tempFood = userResponse.food;
         userResponse.food = "ice cream"
         var resultMap = createMap(userResponse.food, userLocation);
         $("#map").html(resultMap);
         $("#map").show();
         $("#resetBtn").show();
+        $("#riskBtn").show();
       }
       else{
         //New Code//////////////////////////////////////////////////
@@ -199,6 +202,7 @@ function output(){
         })
 
         /////////////////////////////////////////////////////////////
+        tempFood = userResponse.food;
         userResponse.food = "bar"
         $("#response").hide();
         $("#display").hide();
@@ -209,6 +213,7 @@ function output(){
         $("#map").html(resultMap);
         $("#map").show();
         $("#resetBtn").show();
+        $("#riskBtn").show();
       }
   
     }
@@ -219,6 +224,7 @@ function output(){
 
 // hide the submit button
 $("#resetBtn").hide();
+$("#riskBtn").hide();
 $("#submit").hide();
 $("#map").hide();
 // until start button is clicked
@@ -226,6 +232,14 @@ $("#start").click(function(){
   $("#start").hide();
   $("#slideshow").hide();
   $("#submit").show();
+})
+
+$(document).on("click", "#riskBtn", function () {
+  event.preventDefault();
+  var resultMap = createMap(tempFood, userResponse.location);
+  $("#map").html(resultMap);
+  $("#map").show();
+  console.log("Button Clicked");
 })
 
 $('#resetBtn').click(function() {
