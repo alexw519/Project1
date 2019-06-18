@@ -44,31 +44,49 @@ function showQuestion(arr, i) {
   // }
 }
 
-$("#submit").on("click", function() {
-  // if(index <= questionArray.length){
-    var answer = $('#useresponse').val().trim();
-if (answer === "")
-  event.preventDefault();
-else
-{  
-
-    var param = questionArray[index].parameter;
-  
-    userResponse[param] = answer;
-     
-    console.log(userResponse);
-    index++
-
-    if (index < questionArray.length ) {
-      showQuestion(questionArray, index)
+$("#submit").on("click", function() 
+{
+  var answer = $('#useresponse').val().trim();
+  if (answer === "")
+    event.preventDefault();
+  else
+  {  
+    if (index === 4)
+    {
+      if (isNaN(answer))
+      {
+        event.preventDefault();
+      }
+      else
+      {
+        var param = questionArray[index].parameter;
+        userResponse[param] = answer;
+        index++;
+        if (index < questionArray.length ) 
+        {
+          showQuestion(questionArray, index)
+        }
+        else 
+        {
+          loveCalculator();
+        }
+      }
     }
-
-  // }
-  else {
-    loveCalculator();
-    // displayResults();
+    else
+    {
+      var param = questionArray[index].parameter;
+      userResponse[param] = answer;
+      index++;
+      if (index < questionArray.length ) 
+      {
+        showQuestion(questionArray, index)
+      }
+      else 
+      {
+        loveCalculator();
+      }
+    }
   }
-}
 })
 
 
