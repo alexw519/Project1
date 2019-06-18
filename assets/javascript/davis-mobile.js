@@ -10,6 +10,11 @@ var prompt = [
         id: "userAge"
     },
     {
+        message: "Enter Your Location",
+        type: "text",
+        id: "userLocation"
+    },
+    {
         message: "Enter Your Name",
         type: "text",
         id: "userName"
@@ -20,7 +25,7 @@ var prompt = [
         id: "crushName"
     },
     {
-        message: "Enter Date Location",
+        message: "Enter Date City",
         type: "text",
         id: "dateCity"
     },
@@ -64,13 +69,13 @@ $(document).on("click", "#next-question",function () {
         setTimeout(function() {
             $(`#${prompt[i].id}`).removeClass("error");
         }, 300);
-    } else if(i <= 3){
+    } else if(i <= 4){
         userResponse[prompt[i].id] = $(`#${prompt[i].id}`).val().trim();
 
         i++;
         var res = displayPrompt(prompt, i);
         box.html(res)
-    } else if (i=4){
+    } else if (i=5){
         userResponse[prompt[i].id] = $(`#${prompt[i].id}`).val().trim();
         box.hide();
         loveCalculator();
@@ -142,11 +147,13 @@ function output() {
     else if (.4 <= percentage && percentage <= .7) {
         $("#chartSubtitle").text("Take the next step! How about dinner at one of the restaurants below?")
         $("#resetBtn").show();
+        $("#resultsBtn").remove();
         placeMap();
     } else {
         placeMap();
         $("#chartSubtitle").text("Bring a ring with you to the restaurant! We have a feeling they might be the one :)");
         $("#resetBtn").show();
+        $("#resultsBtn").remove();
     }
 }
 
@@ -158,36 +165,17 @@ $("#googleMap").html("<iframe width='450' height='350' frameborder='0' style='bo
 //Suggests a ice cream parlor based off of current location using Google Maps
 function iceCreamSuggest()
 {
-    var localURL = "http://ip-api.com/json/";
-    $.ajax({
-        url: localURL,
-        method: "GET"
-    }).then(function(response)
-    {
-        callMap("ice cream", response.city);
-        console.log(response.city)
-    })
+    var {userLocation} = userResponse;
+    $("#googleMap").html("<iframe width='450' height='350' frameborder='0' style='border:0' src='https://www.google.com/maps/embed/v1/search?q=icecream+in+" + userLocation + "&key=AIzaSyDNR4NPh6CTtgRWlpI-HSMop8makDVAMDM' allowfullscreen></iframe>");
 }
 
 
 //Suggests A Nearby Bar
 function barSuggest()
 {
-    var localURL = "http://ip-api.com/json/";
-    $.ajax({
-        url: localURL,
-        method: "GET"
-    }).then(function(response)
-    {
-        callMap("bar", response.city);
-        console.log(response.city)
-    })
-}
+    var {userLocation} = userResponse;
+    $("#googleMap").html("<iframe width='450' height='350' frameborder='0' style='border:0' src='https://www.google.com/maps/embed/v1/search?q=bar+in+" + userLocation + "&key=AIzaSyDNR4NPh6CTtgRWlpI-HSMop8makDVAMDM' allowfullscreen></iframe>");
 
-//Function To Put A Map On The Screen Based Upon Results
-function callMap(faveFood, dateCity)
-{
-    $("#googleMap").html("<iframe width='450' height='350' frameborder='0' style='border:0' src='https://www.google.com/maps/embed/v1/search?q=" + faveFood + "+in+" + dateCity + "&key=AIzaSyDNR4NPh6CTtgRWlpI-HSMop8makDVAMDM&zoom=12' allowfullscreen></iframe>");
 }
 
 $('#resetBtn').click(function() {
@@ -197,11 +185,4 @@ $('#resetBtn').click(function() {
 $('#resultsBtn').click(function(){
     event.preventDefault();
     placeMap();
-})
-
-$(document).on("click", "#resultsBtn", function () {
-    // event.preventDefault() prevents submit button from trying to send a form.
-    event.preventDefault();
-    callMap(userResponse.faveFood, userResponse.dateCity);
-    console.log("Button Clicked");
 })

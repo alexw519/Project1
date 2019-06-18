@@ -73,9 +73,18 @@ body {
     color: #fe5652;
     text-align: center;
 }
-#resetBtn, #resultsBtn {
-    display:inline-block;
+#resetBtn {
+    /* display:inline-block; */
+    color:white;
+    display: none;
 }
+
+#resultsBtn {
+    /* display:inline-block; */
+    color:white;
+    display: none;
+}
+
 #ageObject  {
     display: block;
     height: 180px;
@@ -92,12 +101,15 @@ body {
     padding-top: 20px;
     z-index:4;
 }
-#userAge, #userName, #crushName, #dateCity, #faveFood {
+#userAge, #userName, #crushName, #dateCity, #faveFood, #userLocation {
     background-color:white;
     height: 25px;
-}
-.hide-me-name, .hide-me-crush, .hide-me-city, .hide-me-food {
-    display: none;
+    color: #fe5652;
+    text-align: center;
+    width: 75%;
+    margin: 5px;
+    margin-top: 15px;
+    font-size: 16px;
 }
 
 .button-css {
@@ -105,10 +117,6 @@ body {
     text-transform: capitalize;
 }
 
-#resetBtn, #resultsBtn {
-    color:white;
-    display: none;
-}
 .btn {
     text-transform: none;
     font-family: 'Source Sans Pro', sans-serif;
@@ -152,15 +160,6 @@ body {
       40%, 60% {
         transform: translate3d(4px, 0, 0);
       }
-}
-
-#userAge, #userName, #crushName, #dateCity, #faveFood {
-    color: #fe5652;
-    text-align: center;
-    width: 75%;
-    margin: 5px;
-    margin-top: 15px;
-    font-size: 16px;
 }
 
 #logo {
