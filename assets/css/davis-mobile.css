@@ -136,7 +136,7 @@ body {
     transition: .3s ease-out;
 }
 
-/* This is the user validation to make sure that text is entered */
+/* This is the user validation to make sure that text is entered. It was taken from stake overflow. I couldn't find the original so here is a similar one:https://stackoverflow.com/questions/33210317/how-to-shake-login-form-on-error */
 .error {
     position: relative;
     animation: shake .1s linear;
@@ -1229,6 +1229,13 @@ stretchRight
         -webkit-transform: scaleX(1);
     }
 }
+
+/*
+==============================================
+Heart loader was copied from here: https://codepen.io/nourabusoud/pen/Afehr
+==============================================
+*/
+
   .beatingHeart{
     width:50px;
     margin:50px auto;
@@ -1364,7 +1371,11 @@ stretchRight
       display: none;
   }
 
-
+/*
+==============================================
+CSS for Chart
+==============================================
+*/
 #gridParent {
     display:none;
 }
@@ -1406,6 +1417,12 @@ stretchRight
 #googleMap {
     margin: 0 auto;
 }
+
+/*
+==============================================
+Falling Hearts was copied and worked from here: https://premiumcoding.com/css3-tricks-falling-leaves-css/
+==============================================
+*/
 
 .fallingHearts {
     text-align: center;
