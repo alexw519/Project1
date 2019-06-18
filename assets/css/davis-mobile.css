@@ -105,6 +105,10 @@ body {
     text-transform: capitalize;
 }
 
+#resetBtn, #resultsBtn {
+    color:white;
+    display: none;
+}
 .btn {
     text-transform: none;
     font-family: 'Source Sans Pro', sans-serif;
