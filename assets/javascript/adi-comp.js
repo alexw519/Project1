@@ -17,6 +17,7 @@ $(document).ready(function() {
 
   var userLocation;
   var tempFood;
+  var isNumber = true;
   var userResponse = {};
   // click on start to see the first question
   $("#start").on("click",function () {
@@ -50,6 +51,7 @@ if (answer === "")
   event.preventDefault();
 else
 {  
+
     var param = questionArray[index].parameter;
   
     userResponse[param] = answer;
