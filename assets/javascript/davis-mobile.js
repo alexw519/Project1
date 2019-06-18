@@ -32,10 +32,10 @@ var prompt = [
 
 ]
 
-var resetBtn = $('<input type="button" value="Not the one? Try again!"/>');
-resetBtn.addClass('waves-effect').addClass('waves-light').addClass('btn').addClass('lighten-2').addClass('hoverable');
-var resultsBtn = $('<input type="button" value="I\'ll risk it"/>');
-resultsBtn.addClass('waves-effect').addClass('waves-light').addClass('btn').addClass('lighten-2').addClass('hoverable').attr("float","left");
+// var resetBtn = $('<input type="button" value="Not the one? Try again!"/>');
+// resetBtn.addClass('waves-effect').addClass('waves-light').addClass('btn').addClass('lighten-2').addClass('hoverable');
+// var resultsBtn = $('<input type="button" value="I\'ll risk it"/>');
+// resultsBtn.addClass('waves-effect').addClass('waves-light').addClass('btn').addClass('lighten-2').addClass('hoverable').attr("float","left");
 var i =0;
 
 
@@ -51,7 +51,6 @@ function displayPrompt(arr, i) {
     return promptBox
 }
 
-var next = true;
 var box = $('<div>')
 $(".myContainer").append(box);
 box.html(displayPrompt(prompt, i)) 
@@ -93,7 +92,6 @@ function loveCalculator() {
         headers: {"X-RapidAPI-Host": "love-calculator.p.rapidapi.com"},
         headers: {"X-RapidAPI-Key": "e6021ca9a5msh5763cf5deefbf36p1059e8jsn2fea555b0671"},
     }).then(function (response) {
-
         //Displays The Percentage On A Graph And Calls The Map Function
         $(".spinner").hide();
         $(".fallingHearts").hide();
@@ -105,7 +103,6 @@ function loveCalculator() {
         percentage = Number(percentage/100).toLocaleString(undefined,{style: 'percent', minimumFractionDigits:0});
         $(".bar-1").css("width", percentage).addClass("hoverable");
         output();
-        placeMap();
     }).fail(function(xhr) {
 
         //If The Call Fails, Generates A Random Number And Displays The Results
@@ -133,22 +130,23 @@ function output() {
     if (percentage < .4 && userAge < 21){
     $("#chartSubtitle").text("Good things come to those who wait. Why not wait at an ice cream shop nearby?");
     iceCreamSuggest();
-    $("#resetBtn").append(resetBtn);
-    $("#resultsBtn").append(resultsBtn);
+    $("#resetBtn").show();
+    $("#resultsBtn").show();
     } 
     else if (percentage < .4 && userAge >= 21){
         $("#chartSubtitle").text("Good things come to those who wait. Why not wait at a bar nearby?");
         barSuggest();
-        $("resetBtn").append(resetBtn);
-        $("resultsBtn").append(resultsBtn);
+        $("#resetBtn").show();
+        $("#resultsBtn").show();
     } 
     else if (.4 <= percentage && percentage <= .7) {
         $("#chartSubtitle").text("Take the next step! How about dinner at one of the restaurants below?")
-        $("resetBtn").append(resetBtn);
+        $("#resetBtn").show();
+        placeMap();
     } else {
         placeMap();
         $("#chartSubtitle").text("Bring a ring with you to the restaurant! We have a feeling they might be the one :)");
-        $("#resetBtn").append(resetBtn);
+        $("#resetBtn").show();
     }
 }
 
@@ -167,6 +165,7 @@ function iceCreamSuggest()
     }).then(function(response)
     {
         callMap("ice cream", response.city);
+        console.log(response.city)
     })
 }
 
@@ -181,6 +180,7 @@ function barSuggest()
     }).then(function(response)
     {
         callMap("bar", response.city);
+        console.log(response.city)
     })
 }
 
@@ -199,23 +199,7 @@ $('#resultsBtn').click(function(){
     placeMap();
 })
 
-// $(document).on("click", ".optionBtn", function () {
-//     // event.preventDefault() prevents submit button from trying to send a form.
-//     event.preventDefault();
-//     callMap();
-//     console.log("Button Clicked");
-// })
-
-function callButton() {
-    var btn = $("<button>");
-    btn.addClass("optionBtn");
-    //add styling to it and space it out
-    btn.text("Get ma results anyways");
-    $("#addButton").append(btn);
-
-}
-
-$(document).on("click", ".optionBtn", function () {
+$(document).on("click", "#resultsBtn", function () {
     // event.preventDefault() prevents submit button from trying to send a form.
     event.preventDefault();
     callMap(userResponse.faveFood, userResponse.dateCity);
