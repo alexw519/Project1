@@ -26,4 +26,4 @@ https://premiumcoding.com/css3-tricks-falling-leaves-css/
 
 ## Deploy this application at https://alexw519.github.io/Project1/
 
-![Logo](LogoWords.png)
+![Logo](LogoWords.jpg.png)
