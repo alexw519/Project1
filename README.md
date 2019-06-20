@@ -12,7 +12,7 @@ with our recommendations to take things to the "next step". Our method is simple
 
 ### Built With:
 * HTML5
-* CSS5
+* CSS3
 * JavaScript
 * Materialize
 * CSS Animations
