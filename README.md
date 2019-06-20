@@ -26,7 +26,7 @@ Adding more events around town i.e. concerts, plays, galleries
 
 Adding an advice column with suggested conversation starters
 
-Future development to have allow users to have an entire date night planned :heart:
+Future development to allow users to have an entire date night planned for them! :heart:
 
 ### Code Sources:
 https://codepen.io/P1N2O/pen/pyBNzX
