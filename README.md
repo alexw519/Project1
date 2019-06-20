@@ -2,8 +2,7 @@
 
 ![Logo](https://github.com/alexw519/Project1/blob/master/assets/images/LogoWords%20(2).png "NextStep Logo")
 
-NextStep is a web and mobile friendly application uniquely designed to provide users and their partner with their compatibility and 
-provide users with personalized date suggestions to take a relationship to the "next step".
+NextStep is a web and mobile friendly application uniquely designed to provide users and their partner with their relationship compatibility as well as personalized date suggestions to take their relationship to the "next step".
 
 ## Overview
 ### How does it work?
